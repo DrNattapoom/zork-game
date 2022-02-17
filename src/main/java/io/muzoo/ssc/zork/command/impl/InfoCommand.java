@@ -7,7 +7,7 @@ public class InfoCommand implements Command {
 
     @Override
     public void execute(Game game, String argument) {
-        System.out.println("print info");
+        System.out.println("Print Info");
     }
 
 }
