@@ -1,9 +1,6 @@
 package io.muzoo.ssc.zork;
 
-import io.muzoo.ssc.zork.command.Command;
-import io.muzoo.ssc.zork.command.CommandFactory;
-import io.muzoo.ssc.zork.command.CommandParser;
-import io.muzoo.ssc.zork.command.CommandType;
+import io.muzoo.ssc.zork.command.*;
 
 import java.util.Scanner;
 
@@ -25,12 +22,12 @@ public class Game {
         System.out.println("Game Started");
         while (!isExit() && scanner.hasNextLine()) {
             String rawInput = scanner.nextLine();
-            CommandType commandType = CommandParser.parseCommand(rawInput);
-            Command command = CommandFactory.get(commandType);
+            CommandLine commandLine = CommandParser.parseCommand(rawInput);
+            Command command = CommandFactory.get(commandLine.getCommandType());
             if (command == null) {
                 System.out.println("try again");
             } else {
-                command.execute(this);
+                command.execute(this, commandLine.getArguments());
             }
         }
     }

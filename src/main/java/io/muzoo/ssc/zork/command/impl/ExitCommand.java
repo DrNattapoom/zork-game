@@ -6,7 +6,7 @@ import io.muzoo.ssc.zork.command.Command;
 public class ExitCommand implements Command {
 
     @Override
-    public void execute(Game game) {
+    public void execute(Game game, String argument) {
         game.exit();
     }
 

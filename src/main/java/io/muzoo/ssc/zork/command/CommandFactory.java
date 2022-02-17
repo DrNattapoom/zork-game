@@ -1,8 +1,5 @@
 package io.muzoo.ssc.zork.command;
 
-import io.muzoo.ssc.zork.command.impl.ExitCommand;
-import io.muzoo.ssc.zork.command.impl.InfoCommand;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;

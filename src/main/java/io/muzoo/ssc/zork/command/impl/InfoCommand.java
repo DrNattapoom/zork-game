@@ -6,7 +6,7 @@ import io.muzoo.ssc.zork.command.Command;
 public class InfoCommand implements Command {
 
     @Override
-    public void execute(Game game) {
+    public void execute(Game game, String argument) {
         System.out.println("print info");
     }
 
