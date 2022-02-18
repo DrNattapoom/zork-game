@@ -7,11 +7,13 @@ import java.util.Scanner;
 public class Game {
 
     private Scanner scanner;
+    private ZorkMap map;
     private Player player;
     private boolean exit;
 
     public Game() {
         this.scanner = new Scanner(System.in);
+        this.map = new ZorkMap();
         this.player = new Player();
         this.exit = false;
     }
