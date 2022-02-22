@@ -8,9 +8,10 @@ public class InfoCommand implements Command {
 
     @Override
     public void execute(Game game, String argument) {
-        System.out.println("Your Max HP is " + Player.getMaxHp());
-        System.out.println("Your current HP is " + game.getPlayer().getHp());
-        System.out.println("Your current Attack Power is " + game.getPlayer().getAttackPower());
+        Player player = game.getPlayer();
+        System.out.println("Your Max HP is " + player.getMaxHp());
+        System.out.println("Your current HP is " + player.getHp());
+        System.out.println("Your current Attack Power is " + player.getAttackPower());
     }
 
 }

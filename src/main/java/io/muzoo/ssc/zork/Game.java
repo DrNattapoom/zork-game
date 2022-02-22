@@ -1,6 +1,7 @@
 package io.muzoo.ssc.zork;
 
 import io.muzoo.ssc.zork.command.*;
+import io.muzoo.ssc.zork.map.ZorkMap;
 
 import java.util.Scanner;
 

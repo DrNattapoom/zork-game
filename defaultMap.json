@@ -8,10 +8,9 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": -1,
-                    "south": 5,
-                    "east": -1,
-                    "west": -1
+                    "south": 5
+                },
+                "monster": {
                 }
             },
             {
@@ -19,10 +18,8 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": -1,
-                    "south": -1,
-                    "east": -1,
-                    "west": -1
+                },
+                "monster": {
                 }
             },
             {
@@ -30,10 +27,13 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": -1,
                     "south": 7,
-                    "east": 4,
-                    "west": -1
+                    "east": 4
+                },
+                "monster": {
+                    "type": "goblin",
+                    "hp": 10,
+                    "attackPower": 2
                 }
             },
             {
@@ -41,10 +41,12 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": -1,
-                    "south": -1,
-                    "east": -1,
                     "west": 3
+                },
+                "monster": {
+                    "type": "goblin",
+                    "hp": 10,
+                    "attackPower": 2
                 }
             },
             {
@@ -54,8 +56,12 @@
                 "doors": {
                     "north": 1,
                     "south": 9,
-                    "east": 6,
-                    "west": -1
+                    "east": 6
+                },
+                "monster": {
+                    "type": "slime",
+                    "hp": 10,
+                    "attackPower": 1
                 }
             },
             {
@@ -63,10 +69,14 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": -1,
                     "south": 10,
                     "east": 7,
                     "west": 5
+                },
+                "monster": {
+                    "type": "slime",
+                    "hp": 10,
+                    "attackPower": 1
                 }
             },
             {
@@ -78,6 +88,8 @@
                     "south": 11,
                     "east": 8,
                     "west": 6
+                },
+                "monster": {
                 }
             },
             {
@@ -85,10 +97,12 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": -1,
-                    "south": -1,
-                    "east": -1,
                     "west": 7
+                },
+                "monster": {
+                    "type": "orc",
+                    "hp": 20,
+                    "attackPower": 3
                 }
             },
             {
@@ -97,9 +111,12 @@
                 "description": "",
                 "doors": {
                     "north": 5,
-                    "south": 13,
-                    "east": -1,
-                    "west": -1
+                    "south": 13
+                },
+                "monster": {
+                    "type": "goblin",
+                    "hp": 10,
+                    "attackPower": 2
                 }
             },
             {
@@ -108,9 +125,12 @@
                 "description": "",
                 "doors": {
                     "north": 6,
-                    "south": -1,
-                    "east": 11,
-                    "west": -1
+                    "east": 11
+                },
+                "monster": {
+                    "type": "slime",
+                    "hp": 10,
+                    "attackPower": 1
                 }
             },
             {
@@ -120,8 +140,9 @@
                 "doors": {
                     "north": 7,
                     "south": 15,
-                    "east": -1,
                     "west": 10
+                },
+                "monster": {
                 }
             },
             {
@@ -129,10 +150,8 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": -1,
-                    "south": -1,
-                    "east": -1,
-                    "west": -1
+                },
+                "monster": {
                 }
             },
             {
@@ -140,10 +159,12 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": 9,
-                    "south": -1,
-                    "east": -1,
-                    "west": -1
+                    "north": 9
+                },
+                "monster": {
+                    "type": "orc",
+                    "hp": 20,
+                    "attackPower": 3
                 }
             },
             {
@@ -151,10 +172,8 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": -1,
-                    "south": -1,
-                    "east": -1,
-                    "west": -1
+                },
+                "monster": {
                 }
             },
             {
@@ -163,9 +182,12 @@
                 "description": "",
                 "doors": {
                     "north": 11,
-                    "south": -1,
-                    "east": 16,
-                    "west": -1
+                    "east": 16
+                },
+                "monster": {
+                    "type": "orc",
+                    "hp": 20,
+                    "attackPower": 3
                 }
             },
             {
@@ -173,10 +195,12 @@
                 "name": "",
                 "description": "",
                 "doors": {
-                    "north": -1,
-                    "south": -1,
-                    "east": -1,
                     "west": 15
+                },
+                "monster": {
+                    "type": "dragon",
+                    "hp": 50,
+                    "attackPower": 5
                 }
             }
         ]

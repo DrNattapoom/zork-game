@@ -1,4 +1,4 @@
-package io.muzoo.ssc.zork;
+package io.muzoo.ssc.zork.map;
 
 import java.util.HashMap;
 import java.util.Map;
