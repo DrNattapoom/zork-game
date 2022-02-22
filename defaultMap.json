@@ -31,9 +31,7 @@
                     "east": 4
                 },
                 "monster": {
-                    "type": "goblin",
-                    "hp": 10,
-                    "attackPower": 2
+                    "type": "goblin"
                 }
             },
             {
@@ -44,9 +42,7 @@
                     "west": 3
                 },
                 "monster": {
-                    "type": "goblin",
-                    "hp": 10,
-                    "attackPower": 2
+                    "type": "goblin"
                 }
             },
             {
@@ -59,9 +55,7 @@
                     "east": 6
                 },
                 "monster": {
-                    "type": "slime",
-                    "hp": 10,
-                    "attackPower": 1
+                    "type": "slime"
                 }
             },
             {
@@ -74,9 +68,7 @@
                     "west": 5
                 },
                 "monster": {
-                    "type": "slime",
-                    "hp": 10,
-                    "attackPower": 1
+                    "type": "slime"
                 }
             },
             {
@@ -100,9 +92,7 @@
                     "west": 7
                 },
                 "monster": {
-                    "type": "orc",
-                    "hp": 20,
-                    "attackPower": 3
+                    "type": "orc"
                 }
             },
             {
@@ -114,9 +104,7 @@
                     "south": 13
                 },
                 "monster": {
-                    "type": "goblin",
-                    "hp": 10,
-                    "attackPower": 2
+                    "type": "goblin"
                 }
             },
             {
@@ -128,9 +116,7 @@
                     "east": 11
                 },
                 "monster": {
-                    "type": "slime",
-                    "hp": 10,
-                    "attackPower": 1
+                    "type": "slime"
                 }
             },
             {
@@ -162,9 +148,7 @@
                     "north": 9
                 },
                 "monster": {
-                    "type": "orc",
-                    "hp": 20,
-                    "attackPower": 3
+                    "type": "orc"
                 }
             },
             {
@@ -186,8 +170,7 @@
                 },
                 "monster": {
                     "type": "orc",
-                    "hp": 20,
-                    "attackPower": 3
+                    "hp": 15
                 }
             },
             {
@@ -198,9 +181,7 @@
                     "west": 15
                 },
                 "monster": {
-                    "type": "dragon",
-                    "hp": 50,
-                    "attackPower": 5
+                    "type": "dragon"
                 }
             }
         ]

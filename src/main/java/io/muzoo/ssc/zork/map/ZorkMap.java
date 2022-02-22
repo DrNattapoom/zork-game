@@ -1,5 +1,9 @@
 package io.muzoo.ssc.zork.map;
 
+import io.muzoo.ssc.zork.map.monster.Monster;
+import io.muzoo.ssc.zork.map.monster.MonsterFactory;
+import io.muzoo.ssc.zork.map.monster.MonsterType;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -51,23 +55,40 @@ public class ZorkMap {
         }
         JSONObject jsonObject = (JSONObject) object;
         JSONObject map = (JSONObject) jsonObject.get("map");
+        // set the map name
         this.name = (String) map.get("name");
         int width = ((Long) ((JSONArray) map.get("dimension")).get(0)).intValue();
         int height = ((Long) ((JSONArray) map.get("dimension")).get(1)).intValue();
+        // set the map dimension
         this.dimension = new int[] { width, height };
+        // initialize 2d grid map
         this.rooms = new Room[height][width];
         JSONArray roomList = (JSONArray) map.get("rooms");
         for (Object obj : roomList) {
             JSONObject jsonRoomObject = (JSONObject) obj;
+            // get room name
             String roomName = (String) jsonRoomObject.get("name");
+            // get room description
             String roomDescription = (String) jsonRoomObject.get("description");
+            // get room number
             int roomNumber = ((Long) jsonRoomObject.get("number")).intValue();
-            Room room = new Room(roomName, roomDescription, roomNumber);
+            // get monster inside the room (if any)
+            JSONObject jsonRoomMonsterObject = (JSONObject) jsonRoomObject.get("monster");
+            Monster monster = null;
+            if (jsonRoomMonsterObject.containsKey("type")) {
+                MonsterType monsterType = MonsterType.getMonsterType((String) jsonRoomMonsterObject.get("type"));
+                int hp = (jsonRoomMonsterObject.containsKey("hp")) ? ((Long) jsonRoomMonsterObject.get("hp")).intValue() : monsterType.getDefaultHp();
+                int attackPower = (jsonRoomMonsterObject.containsKey("attackPower")) ? ((Long) jsonRoomMonsterObject.get("attackPower")).intValue() : monsterType.getDefaultAttackPower();
+                monster = MonsterFactory.createdMonster(monsterType, hp, attackPower);
+            }
+            // create a room
+            Room room = new Room(roomName, roomDescription, roomNumber, monster);
             int[] indexes = getIndexesFromRoomNumber(roomNumber);
             int row = indexes[0];
             int col = indexes[1];
             if (this.rooms[row][col] == null) {
                 this.rooms[row][col] = room;
+                // create doors (if any)
                 JSONObject jsonRoomDoorsObject = (JSONObject) jsonRoomObject.get("doors");
                 for (Object direction : jsonRoomDoorsObject.keySet()) {
                     int neighborRoomNumber = ((Long) jsonRoomDoorsObject.get(direction)).intValue();
@@ -94,7 +115,6 @@ public class ZorkMap {
         for (int row = 0; row < rooms.length; row++) {
             for (int col = 0; col < rooms[row].length; col++) {
                 Room room = this.rooms[row][col];
-                System.out.println(room.getNumber() + " connects to " + room.getDoors());
                 for (String direction : room.getDoors().keySet()) {
                     switch (direction) {
                         case "north":
