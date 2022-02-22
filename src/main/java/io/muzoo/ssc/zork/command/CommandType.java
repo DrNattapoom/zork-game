@@ -3,11 +3,13 @@ package io.muzoo.ssc.zork.command;
 import io.muzoo.ssc.zork.command.impl.ExitCommand;
 import io.muzoo.ssc.zork.command.impl.HelpCommand;
 import io.muzoo.ssc.zork.command.impl.InfoCommand;
+import io.muzoo.ssc.zork.command.impl.MapCommand;
 
 public enum CommandType {
 
-    HELP(HelpCommand.class, "help", "print all commands"),
     INFO(InfoCommand.class, "info", "print out information of the player and the room that the player is currently in, this command only available while playing game"),
+    MAP(MapCommand.class, "map", "print 2D map using ascii art, this command only available while playing game"),
+    HELP(HelpCommand.class, "help", "print all commands"),
     EXIT(ExitCommand.class, "exit", "exit whole game, this command only available at when start the game");
 
     private Class<? extends Command> commandClass;

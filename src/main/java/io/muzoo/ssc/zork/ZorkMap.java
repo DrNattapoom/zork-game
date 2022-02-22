@@ -94,7 +94,6 @@ public class ZorkMap {
         for (int row = 0; row < rooms.length; row++) {
             for (int col = 0; col < rooms[row].length; col++) {
                 Room room = this.rooms[row][col];
-                System.out.println(room.getNumber() + " connects to " + room.getDoors().keySet());
                 for (String direction : room.getDoors().keySet()) {
                     switch (direction) {
                         case "north":

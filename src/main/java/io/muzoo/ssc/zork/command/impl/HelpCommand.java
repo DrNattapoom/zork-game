@@ -13,4 +13,5 @@ public class HelpCommand implements Command {
             System.out.println("\t" + commandType.getCommandWord() + " - " + commandType.getCommandDescription());
         }
     }
+
 }

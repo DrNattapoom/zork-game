@@ -43,6 +43,10 @@ public class Game {
         return player;
     }
 
+    public ZorkMap getMap() {
+        return map;
+    }
+
     public boolean isExit() {
         return exit;
     }
