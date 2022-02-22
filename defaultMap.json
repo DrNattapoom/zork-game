@@ -1,0 +1,187 @@
+{
+    "map": {
+        "name": "Default Map",
+        "dimension": [4, 4],
+        "rooms": [
+            {
+                "number": 1,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": -1,
+                    "south": 5,
+                    "east": -1,
+                    "west": -1
+                }
+            },
+            {
+                "number": 2,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": -1,
+                    "south": -1,
+                    "east": -1,
+                    "west": -1
+                }
+            },
+            {
+                "number": 3,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": -1,
+                    "south": 7,
+                    "east": 4,
+                    "west": -1
+                }
+            },
+            {
+                "number": 4,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": -1,
+                    "south": -1,
+                    "east": -1,
+                    "west": 3
+                }
+            },
+            {
+                "number": 5,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": 1,
+                    "south": 9,
+                    "east": 6,
+                    "west": -1
+                }
+            },
+            {
+                "number": 6,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": -1,
+                    "south": 10,
+                    "east": 7,
+                    "west": 5
+                }
+            },
+            {
+                "number": 7,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": 3,
+                    "south": 11,
+                    "east": 8,
+                    "west": 6
+                }
+            },
+            {
+                "number": 8,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": -1,
+                    "south": -1,
+                    "east": -1,
+                    "west": 7
+                }
+            },
+            {
+                "number": 9,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": 5,
+                    "south": 13,
+                    "east": -1,
+                    "west": -1
+                }
+            },
+            {
+                "number": 10,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": 6,
+                    "south": -1,
+                    "east": 11,
+                    "west": -1
+                }
+            },
+            {
+                "number": 11,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": 7,
+                    "south": 15,
+                    "east": -1,
+                    "west": 10
+                }
+            },
+            {
+                "number": 12,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": -1,
+                    "south": -1,
+                    "east": -1,
+                    "west": -1
+                }
+            },
+            {
+                "number": 13,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": 9,
+                    "south": -1,
+                    "east": -1,
+                    "west": -1
+                }
+            },
+            {
+                "number": 14,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": -1,
+                    "south": -1,
+                    "east": -1,
+                    "west": -1
+                }
+            },
+            {
+                "number": 15,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": 11,
+                    "south": -1,
+                    "east": 16,
+                    "west": -1
+                }
+            },
+            {
+                "number": 16,
+                "name": "",
+                "description": "",
+                "doors": {
+                    "north": -1,
+                    "south": -1,
+                    "east": -1,
+                    "west": 15
+                }
+            }
+        ]
+    },
+    "player": {
+        "position": 1
+    }
+}

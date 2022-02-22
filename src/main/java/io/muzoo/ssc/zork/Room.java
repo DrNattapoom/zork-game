@@ -5,40 +5,38 @@ import java.util.Map;
 
 public class Room {
 
-    private Map<String, Room> doors;
+    private Map<String, Integer> doors;
     private String name;
     private String description;
+    private int number;
 
-    public Room(String name) {
-        this(name, "");
-    }
-
-    public Room(String name, String description) {
+    public Room(String name, String description, int number) {
         this.name = name;
         this.description = description;
+        this.number = number;
         this.doors = new HashMap<>();
     }
 
-    public void createDoor(String direction, Room neighbor) {
-        if (neighbor != null) {
+    public void createDoor(String direction, int neighbor) {
+        if (neighbor != -1) {
             doors.put(direction, neighbor);
         }
     }
 
-    public void printRoom() {
-        System.out.println("----------");
-        System.out.println("----------");
-        System.out.println("----------");
-        System.out.println("----------");
-        System.out.println("----------");
+    public Map<String, Integer> getDoors() {
+        return doors;
     }
 
     public String getName() {
         return name;
     }
 
-    public Map<String, Room> getDoors() {
-        return doors;
+    public String getDescription() {
+        return description;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
 }
