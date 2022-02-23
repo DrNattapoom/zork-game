@@ -13,9 +13,9 @@
                 "monster": {
                 },
                 "item": {
-                    "type": "sword",
-                    "name": "Wooden Sword",
-                    "damage": 3
+                    "type": "physicalShield",
+                    "name": "Wooden Shield",
+                    "defense": 5
                 }
             },
             {
@@ -27,6 +27,9 @@
                 "monster": {
                 },
                 "item": {
+                    "type": "sword",
+                    "name": "Wooden Sword",
+                    "damage": 3
                 }
             },
             {
@@ -57,6 +60,9 @@
                     "type": "goblin"
                 },
                 "item": {
+                    "type": "magicalShield",
+                    "name": "Magic Shield",
+                    "defense": 3
                 }
             },
             {
@@ -72,6 +78,8 @@
                     "type": "slime"
                 },
                 "item": {
+                    "type": "healingPotion",
+                    "name": "Healing Potion"
                 }
             },
             {
@@ -87,6 +95,8 @@
                     "type": "slime"
                 },
                 "item": {
+                    "type": "powerPotion",
+                    "name": "Power Potion"
                 }
             },
             {

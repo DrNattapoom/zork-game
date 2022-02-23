@@ -1,9 +1,6 @@
 package io.muzoo.ssc.zork.map;
 
-import io.muzoo.ssc.zork.map.item.Item;
-import io.muzoo.ssc.zork.map.item.Weapon;
-import io.muzoo.ssc.zork.map.item.WeaponFactory;
-import io.muzoo.ssc.zork.map.item.WeaponType;
+import io.muzoo.ssc.zork.map.item.*;
 import io.muzoo.ssc.zork.map.monster.Monster;
 import io.muzoo.ssc.zork.map.monster.MonsterFactory;
 import io.muzoo.ssc.zork.map.monster.MonsterType;
@@ -88,11 +85,22 @@ public class ZorkMap {
             // get monster inside the room (if any)
             JSONObject jsonRoomItemObject = (JSONObject) jsonRoomObject.get("item");
             Item item = null;
-            if (jsonRoomItemObject.containsKey("damage")) {
-                WeaponType weaponType = WeaponType.getWeaponType((String) jsonRoomItemObject.get("type"));
-                String name = (String) jsonRoomItemObject.get("name");
-                int damage = ((Long) jsonRoomItemObject.get("damage")).intValue();
-                item = WeaponFactory.createdWeapon(weaponType, name, damage);
+            if (jsonRoomItemObject.containsKey("type")) {
+                if (jsonRoomItemObject.containsKey("damage")) {
+                    WeaponType weaponType = WeaponType.getWeaponType((String) jsonRoomItemObject.get("type"));
+                    String name = (String) jsonRoomItemObject.get("name");
+                    int damage = ((Long) jsonRoomItemObject.get("damage")).intValue();
+                    item = WeaponFactory.createdWeapon(weaponType, name, damage);
+                } else if (jsonRoomItemObject.containsKey("defense")) {
+                    ShieldType shieldType = ShieldType.getShieldType((String) jsonRoomItemObject.get("type"));
+                    String name = (String) jsonRoomItemObject.get("name");
+                    int defense = ((Long) jsonRoomItemObject.get("defense")).intValue();
+                    item = ShieldFactory.createdShield(shieldType, name, defense);
+                } else {
+                    PotionType potionType = PotionType.getPotionType((String) jsonRoomItemObject.get("type"));
+                    String name = (String) jsonRoomItemObject.get("name");
+                    item = PotionFactory.createdPotion(potionType, name);
+                }
             }
             // create a room
             Room room = new Room(roomName, roomDescription, roomNumber, monster, item);
