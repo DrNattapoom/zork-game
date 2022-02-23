@@ -1,8 +1,7 @@
 package io.muzoo.ssc.zork.map;
 
+import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.monster.Monster;
-import io.muzoo.ssc.zork.map.monster.MonsterFactory;
-import io.muzoo.ssc.zork.map.monster.MonsterType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,12 +14,14 @@ public class Room {
     private int number;
 
     private Monster monster;
+    private Item item;
 
-    public Room(String name, String description, int number, Monster monster) {
+    public Room(String name, String description, int number, Monster monster, Item item) {
         this.name = name;
         this.description = description;
         this.number = number;
         this.monster = monster;
+        this.item = item;
         this.doors = new HashMap<>();
     }
 
@@ -48,6 +49,10 @@ public class Room {
 
     public Monster getMonster() {
         return monster;
+    }
+
+    public Item getItem() {
+        return item;
     }
 
 }

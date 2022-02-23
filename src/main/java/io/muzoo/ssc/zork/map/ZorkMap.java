@@ -1,5 +1,9 @@
 package io.muzoo.ssc.zork.map;
 
+import io.muzoo.ssc.zork.map.item.Item;
+import io.muzoo.ssc.zork.map.item.Weapon;
+import io.muzoo.ssc.zork.map.item.WeaponFactory;
+import io.muzoo.ssc.zork.map.item.WeaponType;
 import io.muzoo.ssc.zork.map.monster.Monster;
 import io.muzoo.ssc.zork.map.monster.MonsterFactory;
 import io.muzoo.ssc.zork.map.monster.MonsterType;
@@ -81,8 +85,17 @@ public class ZorkMap {
                 int attackPower = (jsonRoomMonsterObject.containsKey("attackPower")) ? ((Long) jsonRoomMonsterObject.get("attackPower")).intValue() : monsterType.getDefaultAttackPower();
                 monster = MonsterFactory.createdMonster(monsterType, hp, attackPower);
             }
+            // get monster inside the room (if any)
+            JSONObject jsonRoomItemObject = (JSONObject) jsonRoomObject.get("item");
+            Item item = null;
+            if (jsonRoomItemObject.containsKey("damage")) {
+                WeaponType weaponType = WeaponType.getWeaponType((String) jsonRoomItemObject.get("type"));
+                String name = (String) jsonRoomItemObject.get("name");
+                int damage = ((Long) jsonRoomItemObject.get("damage")).intValue();
+                item = WeaponFactory.createdWeapon(weaponType, name, damage);
+            }
             // create a room
-            Room room = new Room(roomName, roomDescription, roomNumber, monster);
+            Room room = new Room(roomName, roomDescription, roomNumber, monster, item);
             int[] indexes = getIndexesFromRoomNumber(roomNumber);
             int row = indexes[0];
             int col = indexes[1];

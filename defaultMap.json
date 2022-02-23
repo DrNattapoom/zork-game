@@ -11,6 +11,11 @@
                     "south": 5
                 },
                 "monster": {
+                },
+                "item": {
+                    "type": "sword",
+                    "name": "Wooden Sword",
+                    "damage": 3
                 }
             },
             {
@@ -20,6 +25,8 @@
                 "doors": {
                 },
                 "monster": {
+                },
+                "item": {
                 }
             },
             {
@@ -32,6 +39,11 @@
                 },
                 "monster": {
                     "type": "goblin"
+                },
+                "item": {
+                    "type": "sword",
+                    "name": "Iron Sword",
+                    "damage": 5
                 }
             },
             {
@@ -43,6 +55,8 @@
                 },
                 "monster": {
                     "type": "goblin"
+                },
+                "item": {
                 }
             },
             {
@@ -56,6 +70,8 @@
                 },
                 "monster": {
                     "type": "slime"
+                },
+                "item": {
                 }
             },
             {
@@ -69,6 +85,8 @@
                 },
                 "monster": {
                     "type": "slime"
+                },
+                "item": {
                 }
             },
             {
@@ -82,6 +100,11 @@
                     "west": 6
                 },
                 "monster": {
+                },
+                "item": {
+                    "type": "sword",
+                    "name": "Wooden Sword",
+                    "damage": 3
                 }
             },
             {
@@ -93,6 +116,11 @@
                 },
                 "monster": {
                     "type": "orc"
+                },
+                "item": {
+                    "type": "sword",
+                    "name": "Diamond Sword",
+                    "damage": 7
                 }
             },
             {
@@ -105,6 +133,8 @@
                 },
                 "monster": {
                     "type": "goblin"
+                },
+                "item": {
                 }
             },
             {
@@ -117,6 +147,8 @@
                 },
                 "monster": {
                     "type": "slime"
+                },
+                "item": {
                 }
             },
             {
@@ -129,6 +161,8 @@
                     "west": 10
                 },
                 "monster": {
+                },
+                "item": {
                 }
             },
             {
@@ -138,6 +172,8 @@
                 "doors": {
                 },
                 "monster": {
+                },
+                "item": {
                 }
             },
             {
@@ -149,6 +185,11 @@
                 },
                 "monster": {
                     "type": "orc"
+                },
+                "item": {
+                    "type": "arrow",
+                    "name": "Wooden Arrow",
+                    "damage": 3
                 }
             },
             {
@@ -158,6 +199,11 @@
                 "doors": {
                 },
                 "monster": {
+                },
+                "item": {
+                    "type": "sword",
+                    "name": "Wooden Sword",
+                    "damage": 3
                 }
             },
             {
@@ -171,6 +217,11 @@
                 "monster": {
                     "type": "orc",
                     "hp": 15
+                },
+                "item": {
+                    "type": "sword",
+                    "name": "Iron Sword",
+                    "damage": 5
                 }
             },
             {
@@ -182,6 +233,11 @@
                 },
                 "monster": {
                     "type": "dragon"
+                },
+                "item": {
+                    "type": "arrow",
+                    "name": "Legendary Arrow",
+                    "damage": 15
                 }
             }
         ]
