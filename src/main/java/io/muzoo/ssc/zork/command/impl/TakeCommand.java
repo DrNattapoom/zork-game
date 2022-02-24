@@ -17,6 +17,7 @@ public class TakeCommand implements Command {
         Room currentRoom = rooms[row][col];
         Item item = currentRoom.getItem();
         if (item != null) {
+            System.out.println("taking " + item.getName() + " ...");
             game.getPlayer().takeItem(item);
         }
     }
