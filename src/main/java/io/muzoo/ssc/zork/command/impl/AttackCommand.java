@@ -9,19 +9,19 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class UseCommand implements Command {
+public class AttackCommand implements Command {
 
     @Override
     public void execute(Game game, String argument) {
-        System.out.println("What do you want to use?");
-        List<Item> usableItems = game.getPlayer().getItems().stream().filter(item -> !(item instanceof Weapon)).collect(Collectors.toList());
+        System.out.println("What do you want to attack with?");
+        List<Item> usableItems = game.getPlayer().getItems().stream().filter(item -> item instanceof Weapon).collect(Collectors.toList());
         for (int i = 0; i < usableItems.size(); i++) {
             System.out.print(i + ". " + usableItems.get(i).getName() + " ");
         }
         System.out.println();
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        System.out.println("using " + input + " ...");
+        System.out.println("attacking with " + input + " ...");
     }
 
 }
