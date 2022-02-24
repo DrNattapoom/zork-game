@@ -7,7 +7,11 @@ public class ExitCommand implements Command {
 
     @Override
     public void execute(Game game, String argument) {
-        game.exit();
+        if (!game.getPlaying()) {
+            game.exit();
+        } else {
+            System.out.println("This command is not available while playing the game");
+        }
     }
 
 }

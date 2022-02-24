@@ -11,16 +11,20 @@ public class DropCommand implements Command {
 
     @Override
     public void execute(Game game, String argument) {
-        System.out.println("What do you want to drop?");
-        List<Item> items = game.getPlayer().getItems();
-        for (Item item : items) {
-            System.out.print(item + " ");
+        if (game.getPlaying()) {
+            System.out.println("What do you want to drop?");
+            List<Item> items = game.getPlayer().getItems();
+            for (Item item : items) {
+                System.out.print(item + " ");
+            }
+            System.out.println();
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            System.out.println("dropping " + input + " ...");
+            items.removeIf(item -> item.getName().equals(input));
+        } else {
+            System.out.println("This command is only available while playing the game");
         }
-        System.out.println();
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        System.out.println("dropping " + input + " ...");
-        items.removeIf(item -> item.getName().equals(input));
     }
 
 }

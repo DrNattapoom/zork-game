@@ -2,6 +2,7 @@ package io.muzoo.ssc.zork;
 
 import io.muzoo.ssc.zork.command.*;
 import io.muzoo.ssc.zork.map.ZorkMap;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -18,6 +19,7 @@ public class Game {
     private Scanner scanner;
     private ZorkMap map;
     private Player player;
+    private boolean playing;
     private boolean exit;
 
     public Game() {
@@ -43,7 +45,7 @@ public class Game {
     private void printWelcome() {
         System.out.println("Game Started");
         System.out.println("Welcome to the World of Zork!");
-        System.out.println("Type 'help' if you need help.");
+        System.out.println("Type 'help' if you need help");
     }
 
     public Player getPlayer() {
@@ -52,6 +54,14 @@ public class Game {
 
     public ZorkMap getMap() {
         return map;
+    }
+
+    public boolean getPlaying() {
+        return playing;
+    }
+
+    public void setPlaying(boolean playing) {
+        this.playing = playing;
     }
 
     public boolean isExit() {

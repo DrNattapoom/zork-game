@@ -8,9 +8,14 @@ public class PlayCommand implements Command {
 
     @Override
     public void execute(Game game, String argument) {
-        argument = (StringUtils.isBlank(argument)) ? game.getDefaultPath() : argument;
-        System.out.println("loading " + argument + " ...");
-        game.load(argument);
+        if (!game.getPlaying()) {
+            argument = (StringUtils.isBlank(argument)) ? game.getDefaultPath() : argument;
+            System.out.println("loading " + argument + " ...");
+            game.setPlaying(true);
+            game.load(argument);
+        } else {
+            System.out.println("This command is not available while playing the game");
+        }
     }
 
 }

@@ -13,15 +13,19 @@ public class UseCommand implements Command {
 
     @Override
     public void execute(Game game, String argument) {
-        System.out.println("What do you want to use?");
-        List<Item> usableItems = game.getPlayer().getItems().stream().filter(item -> !(item instanceof Weapon)).collect(Collectors.toList());
-        for (int i = 0; i < usableItems.size(); i++) {
-            System.out.print(i + ". " + usableItems.get(i).getName() + " ");
+        if (game.getPlaying()) {
+            System.out.println("What do you want to use?");
+            List<Item> usableItems = game.getPlayer().getItems().stream().filter(item -> !(item instanceof Weapon)).collect(Collectors.toList());
+            for (int i = 0; i < usableItems.size(); i++) {
+                System.out.print(i + ". " + usableItems.get(i).getName() + " ");
+            }
+            System.out.println();
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            System.out.println("using " + input + " ...");
+        } else {
+            System.out.println("This command is only available while playing the game");
         }
-        System.out.println();
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        System.out.println("using " + input + " ...");
     }
 
 }
