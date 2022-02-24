@@ -91,6 +91,10 @@ public class ZorkMap {
         return new int[] { row, col };
     }
 
+    public Room[][] getRooms() {
+        return rooms;
+    }
+
     public void printMap() {
         int width = this.dimension[0];
         int height = this.dimension[1];

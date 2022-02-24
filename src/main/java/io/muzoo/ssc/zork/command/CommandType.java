@@ -5,6 +5,7 @@ import io.muzoo.ssc.zork.command.impl.*;
 public enum CommandType {
 
     INFO(InfoCommand.class, "info", "print out information of the player and the room that the player is currently in, this command only available while playing game"),
+    GO(GoCommand.class, "go", "move player to the room as specified by the direction, e.g. north, east, west, south, this command only available while playing game"),
     MAP(MapCommand.class, "map", "print 2D map using ascii art, this command only available while playing game"),
     HELP(HelpCommand.class, "help", "print all commands"),
     PLAY(PlayCommand.class, "play", "play new game, this command only available at when start the game"),
