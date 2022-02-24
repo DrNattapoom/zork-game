@@ -253,6 +253,8 @@
         ]
     },
     "player": {
-        "position": 1
+        "hp": 10,
+        "attackPower": 1,
+        "location": 1
     }
 }

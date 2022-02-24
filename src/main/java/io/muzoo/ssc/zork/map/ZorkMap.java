@@ -7,55 +7,20 @@ import io.muzoo.ssc.zork.map.monster.MonsterType;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Arrays;
 
 public class ZorkMap {
 
-    private static String DEFAULT_PATH = "defaultMap.json";
-
     private Room[][] rooms;
-    private String path;
     private String name;
     private int[] dimension;
 
-    public ZorkMap() {
-        this(DEFAULT_PATH);
+    public ZorkMap(JSONObject jsonMapObject) {
+        loadMap(jsonMapObject);
     }
 
-    public ZorkMap(String path) {
-        this.path = path;
-        load();
-    }
-
-    private void load() {
-        JSONParser parser = new JSONParser();
-        Object object = null;
-        try {
-            object = parser.parse(new FileReader(this.path));
-        } catch (FileNotFoundException e) {
-            // catch an exception thrown by FileReader
-            System.out.println("[load]");
-            System.out.println("FileNotFoundException: " + e.getMessage());
-            e.printStackTrace();
-        } catch (ParseException e) {
-            // catch an exception thrown by parser.parse
-            System.out.println("[load]");
-            System.out.println("ParseException: " + e.getMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
-            // catch an exception thrown by parser.parse
-            System.out.println("[load]");
-            System.out.println("IOException: " + e.getMessage());
-            e.printStackTrace();
-        }
-        JSONObject jsonObject = (JSONObject) object;
-        JSONObject map = (JSONObject) jsonObject.get("map");
+    private void loadMap(JSONObject map) {
         // set the map name
         this.name = (String) map.get("name");
         int width = ((Long) ((JSONArray) map.get("dimension")).get(0)).intValue();
