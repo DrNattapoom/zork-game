@@ -13,6 +13,7 @@ public class InfoCommand implements Command {
         System.out.println("Your current HP is " + player.getHp());
         System.out.println("Your current Attack Power is " + player.getAttackPower());
         System.out.println("You are in Room Number " + player.getLocation());
+        System.out.println("Your item(s) is/are " + player.getItems());
     }
 
 }
