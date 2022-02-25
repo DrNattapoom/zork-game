@@ -45,6 +45,9 @@ public class AttackCommand implements Command {
                         if (enemy.getHp() <= 0) {
                             System.out.println(StringUtils.capitalize(enemy.getMonsterType().getType()) + " is dead");
                             game.getMap().getRoom(game.getPlayer().getLocation()).setMonster(null);
+                            player.setAttackPower(player.getAttackPower() + 1);
+                            System.out.println("You leveled up");
+                            System.out.println("Your Attack Power is now " + player.getAttackPower());
                         } else {
                             enemy.attack(player);
                         }
