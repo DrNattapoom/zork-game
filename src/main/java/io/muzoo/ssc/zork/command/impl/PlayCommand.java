@@ -13,6 +13,7 @@ public class PlayCommand implements Command {
             System.out.println("loading " + argument + " ...");
             game.setPlaying(true);
             game.load(argument);
+            System.out.println("Game Loaded");
         } else {
             System.out.println("This command is not available while playing the game");
         }

@@ -10,6 +10,7 @@ public class QuitCommand implements Command {
         if (game.getPlaying()) {
             System.out.println("ending the current game ...");
             game.setPlaying(false);
+            System.out.println("Game Ended");
         } else {
             System.out.println("This command is only available while playing the game");
         }

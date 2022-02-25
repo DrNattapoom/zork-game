@@ -55,4 +55,8 @@ public class Room {
         return item;
     }
 
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
 }

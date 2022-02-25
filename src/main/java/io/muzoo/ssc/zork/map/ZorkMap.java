@@ -47,7 +47,7 @@ public class ZorkMap {
                 int attackPower = (jsonRoomMonsterObject.containsKey("attackPower")) ? ((Long) jsonRoomMonsterObject.get("attackPower")).intValue() : monsterType.getDefaultAttackPower();
                 monster = MonsterFactory.createdMonster(monsterType, hp, attackPower);
             }
-            // get monster inside the room (if any)
+            // get item inside the room (if any)
             JSONObject jsonRoomItemObject = (JSONObject) jsonRoomObject.get("item");
             Item item = null;
             if (jsonRoomItemObject.containsKey("type")) {
@@ -93,6 +93,13 @@ public class ZorkMap {
 
     public Room[][] getRooms() {
         return rooms;
+    }
+
+    public Room getRoom(int roomNumber) {
+        int[] indexes = getIndexesFromRoomNumber(roomNumber);
+        int row = indexes[0];
+        int col = indexes[1];
+        return rooms[row][col];
     }
 
     public void printMap() {

@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    private static String DEFAULT_PATH = "defaultMap.json";
+    private static final String DEFAULT_PATH = "defaultMap.json";
 
     private Scanner scanner;
     private ZorkMap map;
@@ -95,8 +95,10 @@ public class Game {
             e.printStackTrace();
         }
         JSONObject jsonGameObject = (JSONObject) object;
+        // get json map object
         JSONObject jsonMapObject = (JSONObject) jsonGameObject.get("map");
         this.map = new ZorkMap(jsonMapObject);
+        // get json player object
         JSONObject jsonPlayerObject = (JSONObject) jsonGameObject.get("player");
         int hp = ((Long) jsonPlayerObject.get("hp")).intValue();
         int attackPower = ((Long) jsonPlayerObject.get("attackPower")).intValue();

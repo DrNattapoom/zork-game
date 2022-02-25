@@ -13,8 +13,13 @@ public class InfoCommand implements Command {
             System.out.println("Your Max HP is " + player.getMaxHp());
             System.out.println("Your current HP is " + player.getHp());
             System.out.println("Your current Attack Power is " + player.getAttackPower());
-            System.out.println("You are in Room Number " + player.getLocation());
             System.out.println("Your item(s) is/are " + player.getItems());
+            System.out.println("You are in Room Number " + player.getLocation());
+            System.out.print("Doors: ");
+            for (String direction : game.getMap().getRoom(player.getLocation()).getDoors().keySet()) {
+                System.out.print(direction + " ");
+            }
+            System.out.println();
         } else {
             System.out.println("This command is only available while playing the game");
         }

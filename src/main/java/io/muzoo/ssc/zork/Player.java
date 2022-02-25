@@ -1,5 +1,6 @@
 package io.muzoo.ssc.zork;
 
+import io.muzoo.ssc.zork.map.Room;
 import io.muzoo.ssc.zork.map.item.Item;
 
 import java.util.ArrayList;
@@ -10,12 +11,7 @@ public class Player extends Mortal {
     private static int MAX_HP = 10;
 
     private List<Item> items;
-
     private int location;
-
-    public Player(int hp, int attackPower) {
-        super(hp, attackPower);
-    }
 
     public Player(int hp, int attackPower, int location) {
         super(hp, attackPower);
