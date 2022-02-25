@@ -56,8 +56,15 @@ public class Player extends Mortal {
 
     public void attackWith(Weapon weapon, Mortal enemy) {
         int originalAttackPower = this.getAttackPower();
+        System.out.println("Your Attack Power is " + originalAttackPower);
         weapon.activate(this);
+        System.out.println("Your Attack Power with the weapon is " + this.getAttackPower());
         attack(enemy);
+        weapon.setDurability(weapon.getDurability() - 1);
+        if (weapon.getDurability() <= 0) {
+            System.out.println(weapon + " is now broken");
+            items.remove(weapon);
+        }
         this.setAttackPower(originalAttackPower);
     }
 

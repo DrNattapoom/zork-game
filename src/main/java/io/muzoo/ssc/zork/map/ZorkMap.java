@@ -61,7 +61,8 @@ public class ZorkMap {
                     WeaponType weaponType = WeaponType.getWeaponType((String) jsonRoomItemObject.get("type"));
                     String name = (String) jsonRoomItemObject.get("name");
                     int damage = ((Long) jsonRoomItemObject.get("damage")).intValue();
-                    item = WeaponFactory.createdWeapon(weaponType, name, damage);
+                    int durability = ((Long) jsonRoomItemObject.get("durability")).intValue();
+                    item = WeaponFactory.createdWeapon(weaponType, name, damage, durability);
                 } else if (jsonRoomItemObject.containsKey("defense")) {
                     ShieldType shieldType = ShieldType.getShieldType((String) jsonRoomItemObject.get("type"));
                     String name = (String) jsonRoomItemObject.get("name");
