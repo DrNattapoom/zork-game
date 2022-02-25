@@ -44,4 +44,11 @@ public class Player extends Mortal {
         items.add(item);
     }
 
+    @Override
+    public void attack(Mortal enemy) {
+        int currentEnemyHp = enemy.getHp();
+        int damage = this.getAttackPower();
+        enemy.setHp(currentEnemyHp - damage);
+    }
+
 }

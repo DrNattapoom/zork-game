@@ -22,4 +22,6 @@ public abstract class Mortal {
         return attackPower;
     }
 
+    public abstract void attack(Mortal enemy);
+
 }

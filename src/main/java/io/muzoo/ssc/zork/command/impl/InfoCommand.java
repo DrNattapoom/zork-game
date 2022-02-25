@@ -3,6 +3,9 @@ package io.muzoo.ssc.zork.command.impl;
 import io.muzoo.ssc.zork.Game;
 import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.command.Command;
+import io.muzoo.ssc.zork.map.Room;
+import io.muzoo.ssc.zork.map.monster.Monster;
+import org.apache.commons.lang3.StringUtils;
 
 public class InfoCommand implements Command {
 
@@ -20,6 +23,13 @@ public class InfoCommand implements Command {
                 System.out.print(direction + " ");
             }
             System.out.println();
+            Room currentRoom = game.getMap().getRoom(player.getLocation());
+            Monster monster = currentRoom.getMonster();
+            if (monster != null) {
+                System.out.println("There is a " + StringUtils.capitalize(monster.getMonsterType().getType()));
+                System.out.println("Its HP is " + monster.getHp());
+                System.out.println("Its Attack Power is " + monster.getAttackPower());
+            }
         } else {
             System.out.println("This command is only available while playing the game");
         }

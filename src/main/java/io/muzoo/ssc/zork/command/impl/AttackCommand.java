@@ -1,9 +1,12 @@
 package io.muzoo.ssc.zork.command.impl;
 
 import io.muzoo.ssc.zork.Game;
+import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.command.Command;
 import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.Weapon;
+import io.muzoo.ssc.zork.map.monster.Monster;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -16,6 +19,10 @@ public class AttackCommand implements Command {
     @Override
     public void execute(Game game, String argument) {
         if (game.getPlaying()) {
+            Monster enemy = game.getMap().getRoom(game.getPlayer().getLocation()).getMonster();
+            if (enemy == null) {
+                System.out.println("There is no monster here");
+            }
             List<Item> usableItems = game.getPlayer().getItems().stream().filter(item -> item instanceof Weapon).collect(Collectors.toList());
             if (usableItems.isEmpty()) {
                 System.out.println("There is no item to be used to attack with");
@@ -31,7 +38,10 @@ public class AttackCommand implements Command {
                 }
                 Item tobeUsed = (isValidIndex(usableItems, argument)) ? usableItems.get(Integer.parseInt(argument) - 1) : usableItemsMap.get(argument);
                 if (tobeUsed != null) {
-                    System.out.println("attack with " + tobeUsed + " ...");
+                    Player player = game.getPlayer();
+                    System.out.println(String.format("Attack %s with %s", StringUtils.capitalize(enemy.getMonsterType().getType()), tobeUsed));
+                    player.attack(enemy);
+                    enemy.attack(player);
                 } else {
                     System.out.println("There is no such item");
                 }
