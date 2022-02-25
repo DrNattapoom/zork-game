@@ -1,6 +1,5 @@
 package io.muzoo.ssc.zork;
 
-import io.muzoo.ssc.zork.map.Room;
 import io.muzoo.ssc.zork.map.item.Item;
 
 import java.util.ArrayList;
@@ -17,6 +16,12 @@ public class Player extends Mortal {
         super(hp, attackPower);
         this.items = new ArrayList<>();
         this.location = location;
+    }
+
+    public void recover(int recoveredHp) {
+        int currentHp = this.getHp();
+        int newHp = Math.min(currentHp + recoveredHp, MAX_HP);
+        this.setHp(newHp);
     }
 
     public int getMaxHp() {

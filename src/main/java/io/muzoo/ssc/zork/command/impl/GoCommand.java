@@ -15,6 +15,7 @@ public class GoCommand implements Command {
             if (currentRoom.getDoors().containsKey(argument)) {
                 int nextLocation = currentRoom.getDoors().get(argument);
                 player.setLocation(nextLocation);
+                player.recover(1);
                 System.out.println("You are in Room Number " + player.getLocation());
                 System.out.print("Doors: ");
                 for (String direction : game.getMap().getRoom(player.getLocation()).getDoors().keySet()) {
