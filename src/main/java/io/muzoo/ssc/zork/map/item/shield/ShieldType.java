@@ -1,4 +1,7 @@
-package io.muzoo.ssc.zork.map.item;
+package io.muzoo.ssc.zork.map.item.shield;
+
+import io.muzoo.ssc.zork.map.item.shield.impl.MagicalShield;
+import io.muzoo.ssc.zork.map.item.shield.impl.PhysicalShield;
 
 public enum ShieldType {
 

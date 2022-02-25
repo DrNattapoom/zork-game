@@ -1,4 +1,7 @@
-package io.muzoo.ssc.zork.map.item;
+package io.muzoo.ssc.zork.map.item.potion;
+
+import io.muzoo.ssc.zork.map.item.potion.impl.HealingPotion;
+import io.muzoo.ssc.zork.map.item.potion.impl.PowerPotion;
 
 public enum PotionType {
 

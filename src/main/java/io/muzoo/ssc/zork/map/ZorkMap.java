@@ -1,6 +1,12 @@
 package io.muzoo.ssc.zork.map;
 
 import io.muzoo.ssc.zork.map.item.*;
+import io.muzoo.ssc.zork.map.item.potion.PotionFactory;
+import io.muzoo.ssc.zork.map.item.potion.PotionType;
+import io.muzoo.ssc.zork.map.item.shield.ShieldFactory;
+import io.muzoo.ssc.zork.map.item.shield.ShieldType;
+import io.muzoo.ssc.zork.map.item.weapon.WeaponFactory;
+import io.muzoo.ssc.zork.map.item.weapon.WeaponType;
 import io.muzoo.ssc.zork.map.monster.Monster;
 import io.muzoo.ssc.zork.map.monster.MonsterFactory;
 import io.muzoo.ssc.zork.map.monster.MonsterType;

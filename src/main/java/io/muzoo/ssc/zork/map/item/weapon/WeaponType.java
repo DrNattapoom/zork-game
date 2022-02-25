@@ -1,4 +1,7 @@
-package io.muzoo.ssc.zork.map.item;
+package io.muzoo.ssc.zork.map.item.weapon;
+
+import io.muzoo.ssc.zork.map.item.weapon.impl.Arrow;
+import io.muzoo.ssc.zork.map.item.weapon.impl.Sword;
 
 public enum WeaponType {
 

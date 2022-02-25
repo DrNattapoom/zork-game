@@ -4,7 +4,7 @@ import io.muzoo.ssc.zork.Game;
 import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.command.Command;
 import io.muzoo.ssc.zork.map.item.Item;
-import io.muzoo.ssc.zork.map.item.Weapon;
+import io.muzoo.ssc.zork.map.item.weapon.Weapon;
 import io.muzoo.ssc.zork.map.monster.Monster;
 
 import org.apache.commons.lang3.StringUtils;

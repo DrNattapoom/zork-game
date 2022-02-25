@@ -1,4 +1,6 @@
-package io.muzoo.ssc.zork.map.item;
+package io.muzoo.ssc.zork.map.item.shield;
+
+import io.muzoo.ssc.zork.map.item.Item;
 
 public abstract class Shield extends Item {
 

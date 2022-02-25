@@ -3,7 +3,7 @@ package io.muzoo.ssc.zork.command.impl;
 import io.muzoo.ssc.zork.Game;
 import io.muzoo.ssc.zork.command.Command;
 import io.muzoo.ssc.zork.map.item.Item;
-import io.muzoo.ssc.zork.map.item.Weapon;
+import io.muzoo.ssc.zork.map.item.weapon.Weapon;
 
 import org.apache.commons.lang3.StringUtils;
 

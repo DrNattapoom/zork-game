@@ -1,4 +1,6 @@
-package io.muzoo.ssc.zork.map.item;
+package io.muzoo.ssc.zork.map.item.weapon;
+
+import io.muzoo.ssc.zork.map.item.Item;
 
 public abstract class Weapon extends Item {
 

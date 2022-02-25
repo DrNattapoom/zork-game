@@ -1,4 +1,4 @@
-package io.muzoo.ssc.zork.map.item;
+package io.muzoo.ssc.zork.map.item.weapon;
 
 import java.lang.reflect.InvocationTargetException;
 
