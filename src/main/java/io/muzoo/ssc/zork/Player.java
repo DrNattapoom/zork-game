@@ -1,6 +1,9 @@
 package io.muzoo.ssc.zork;
 
 import io.muzoo.ssc.zork.map.item.Item;
+import io.muzoo.ssc.zork.map.item.weapon.Weapon;
+import io.muzoo.ssc.zork.map.monster.Monster;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +45,14 @@ public class Player extends Mortal {
 
     public void takeItem(Item item) {
         items.add(item);
+    }
+
+    public void attackWith(Weapon weapon, Mortal enemy) {
+        int originalAttackPower = this.getAttackPower();
+        int newAttackPower = originalAttackPower + weapon.getDamage();
+        this.setAttackPower(newAttackPower);
+        attack(enemy);
+        this.setAttackPower(originalAttackPower);
     }
 
     @Override

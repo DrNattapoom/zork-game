@@ -51,6 +51,10 @@ public class Room {
         return monster;
     }
 
+    public void setMonster(Monster monster) {
+        this.monster = monster;
+    }
+
     public Item getItem() {
         return item;
     }

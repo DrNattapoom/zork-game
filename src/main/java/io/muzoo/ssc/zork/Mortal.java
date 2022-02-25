@@ -22,6 +22,10 @@ public abstract class Mortal {
         return attackPower;
     }
 
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+    }
+
     public abstract void attack(Mortal enemy);
 
 }

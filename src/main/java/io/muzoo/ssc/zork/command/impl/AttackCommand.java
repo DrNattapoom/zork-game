@@ -22,28 +22,35 @@ public class AttackCommand implements Command {
             Monster enemy = game.getMap().getRoom(game.getPlayer().getLocation()).getMonster();
             if (enemy == null) {
                 System.out.println("There is no monster here");
-            }
-            List<Item> usableItems = game.getPlayer().getItems().stream().filter(item -> item instanceof Weapon).collect(Collectors.toList());
-            if (usableItems.isEmpty()) {
-                System.out.println("There is no item to be used to attack with");
             } else {
-                Map<String, Item> usableItemsMap = usableItems.stream().collect(Collectors.toMap(Item::getName, item -> item));
-                if (StringUtils.isBlank(argument)) {
-                    System.out.println("What do you want to attack with?");
-                    for (int i = 0; i < usableItems.size(); i++) {
-                        System.out.println(String.format("(%x) %s ", i + 1, usableItems.get(i)));
-                    }
-                    Scanner scanner = new Scanner(System.in);
-                    argument = scanner.nextLine();
-                }
-                Item tobeUsed = (isValidIndex(usableItems, argument)) ? usableItems.get(Integer.parseInt(argument) - 1) : usableItemsMap.get(argument);
-                if (tobeUsed != null) {
-                    Player player = game.getPlayer();
-                    System.out.println(String.format("Attack %s with %s", StringUtils.capitalize(enemy.getMonsterType().getType()), tobeUsed));
-                    player.attack(enemy);
-                    enemy.attack(player);
+                List<Item> usableItems = game.getPlayer().getItems().stream().filter(item -> item instanceof Weapon).collect(Collectors.toList());
+                if (usableItems.isEmpty()) {
+                    System.out.println("There is no item to be used to attack with");
                 } else {
-                    System.out.println("There is no such item");
+                    Map<String, Item> usableItemsMap = usableItems.stream().collect(Collectors.toMap(Item::getName, item -> item));
+                    if (StringUtils.isBlank(argument)) {
+                        System.out.println("What do you want to attack with?");
+                        for (int i = 0; i < usableItems.size(); i++) {
+                            System.out.println(String.format("(%x) %s ", i + 1, usableItems.get(i)));
+                        }
+                        Scanner scanner = new Scanner(System.in);
+                        argument = scanner.nextLine();
+                    }
+                    Item tobeUsed = (isValidIndex(usableItems, argument)) ? usableItems.get(Integer.parseInt(argument) - 1) : usableItemsMap.get(argument);
+                    if (tobeUsed != null) {
+                        Player player = game.getPlayer();
+                        Weapon weapon = (Weapon) tobeUsed;
+                        System.out.println(String.format("Attack %s with %s", StringUtils.capitalize(enemy.getMonsterType().getType()), weapon));
+                        player.attackWith(weapon, enemy);
+                        if (enemy.getHp() <= 0) {
+                            System.out.println(StringUtils.capitalize(enemy.getMonsterType().getType()) + " is dead");
+                            game.getMap().getRoom(game.getPlayer().getLocation()).setMonster(null);
+                        } else {
+                            enemy.attack(player);
+                        }
+                    } else {
+                        System.out.println("There is no such item");
+                    }
                 }
             }
         } else {
