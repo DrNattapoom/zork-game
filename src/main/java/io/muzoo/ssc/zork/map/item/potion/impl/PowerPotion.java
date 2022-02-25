@@ -1,11 +1,21 @@
 package io.muzoo.ssc.zork.map.item.potion.impl;
 
+import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.map.item.potion.Potion;
+
+import java.util.Random;
 
 public class PowerPotion extends Potion {
 
     public PowerPotion(String name) {
         super(name);
+    }
+
+    @Override
+    public void activate(Player player) {
+        int originalAttackPower = player.getAttackPower();
+        int newAttackPower = new Random().nextInt(originalAttackPower) + originalAttackPower;
+        player.setAttackPower(newAttackPower);
     }
 
 }

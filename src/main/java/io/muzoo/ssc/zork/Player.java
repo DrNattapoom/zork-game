@@ -2,8 +2,6 @@ package io.muzoo.ssc.zork;
 
 import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.weapon.Weapon;
-import io.muzoo.ssc.zork.map.monster.Monster;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +12,7 @@ public class Player extends Mortal {
 
     private List<Item> items;
     private int location;
+    private int defense;
 
     public Player(int hp, int attackPower, int location) {
         super(hp, attackPower);
@@ -47,10 +46,17 @@ public class Player extends Mortal {
         items.add(item);
     }
 
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
     public void attackWith(Weapon weapon, Mortal enemy) {
         int originalAttackPower = this.getAttackPower();
-        int newAttackPower = originalAttackPower + weapon.getDamage();
-        this.setAttackPower(newAttackPower);
+        weapon.activate(this);
         attack(enemy);
         this.setAttackPower(originalAttackPower);
     }

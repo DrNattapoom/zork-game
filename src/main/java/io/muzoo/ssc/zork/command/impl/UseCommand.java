@@ -1,6 +1,7 @@
 package io.muzoo.ssc.zork.command.impl;
 
 import io.muzoo.ssc.zork.Game;
+import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.command.Command;
 import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.weapon.Weapon;
@@ -17,7 +18,8 @@ public class UseCommand implements Command {
     @Override
     public void execute(Game game, String argument) {
         if (game.getPlaying()) {
-            List<Item> usableItems = game.getPlayer().getItems().stream().filter(item -> !(item instanceof Weapon)).collect(Collectors.toList());
+            Player player = game.getPlayer();
+            List<Item> usableItems = player.getItems().stream().filter(item -> !(item instanceof Weapon)).collect(Collectors.toList());
             if (usableItems.isEmpty()) {
                 System.out.println("There is no item to be used");
             } else {
@@ -33,6 +35,8 @@ public class UseCommand implements Command {
                 Item tobeUsed = (isValidIndex(usableItems, argument)) ? usableItems.get(Integer.parseInt(argument) - 1) : usableItemsMap.get(argument);
                 if (tobeUsed != null) {
                     System.out.println("using " + tobeUsed + " ...");
+                    tobeUsed.activate(player);
+                    player.getItems().remove(tobeUsed);
                 } else {
                     System.out.println("There is no such item");
                 }
