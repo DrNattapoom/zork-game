@@ -1,7 +1,10 @@
 package io.muzoo.ssc.zork;
 
 import io.muzoo.ssc.zork.map.item.Item;
+import io.muzoo.ssc.zork.map.item.ItemFactory;
 import io.muzoo.ssc.zork.map.item.weapon.Weapon;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +17,24 @@ public class Player extends Mortal {
     private int location;
     private int defense;
 
-    public Player(int hp, int attackPower, int location) {
+    public Player(int hp, int attackPower) {
         super(hp, attackPower);
         this.items = new ArrayList<>();
-        this.location = location;
+    }
+
+    public Player(JSONObject jsonObject) {
+        this(
+            ((Long) jsonObject.get("hp")).intValue(),
+            ((Long) jsonObject.get("attackPower")).intValue()
+        );
+        this.location = ((Long) jsonObject.get("location")).intValue();
+        this.defense = ((Long) jsonObject.get("defense")).intValue();
+        JSONArray itemList = (JSONArray) jsonObject.get("items");
+        for (Object object : itemList) {
+            JSONObject jsonItemObject = (JSONObject) object;
+            Item item = ItemFactory.createdItem(jsonItemObject);
+            this.items.add(item);
+        }
     }
 
     public void recover(int recoveredHp) {

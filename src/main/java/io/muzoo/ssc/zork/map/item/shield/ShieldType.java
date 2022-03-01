@@ -5,8 +5,8 @@ import io.muzoo.ssc.zork.map.item.shield.impl.PhysicalShield;
 
 public enum ShieldType {
 
-    PHYSICAL_SHIELD(PhysicalShield.class, "physicalShield"),
-    MAGICAL_SHIELD(MagicalShield.class, "magicalShield");
+    PHYSICAL_SHIELD(PhysicalShield.class, "PHYSICAL_SHIELD"),
+    MAGICAL_SHIELD(MagicalShield.class, "MAGICAL_SHIELD");
 
     private Class<? extends Shield> shieldClass;
     private String type;

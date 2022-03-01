@@ -5,8 +5,8 @@ import io.muzoo.ssc.zork.map.item.weapon.impl.Sword;
 
 public enum WeaponType {
 
-    SWORD(Sword.class, "sword"),
-    ARROW(Arrow.class, "arrow");
+    SWORD(Sword.class, "SWORD"),
+    ARROW(Arrow.class, "ARROW");
 
     private Class<? extends Weapon> weaponClass;
     private String type;

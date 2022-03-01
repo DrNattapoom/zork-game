@@ -5,8 +5,8 @@ import io.muzoo.ssc.zork.map.item.potion.impl.PowerPotion;
 
 public enum PotionType {
 
-    HEALING_POTION(HealingPotion.class, "healingPotion"),
-    POWER_POTION(PowerPotion.class, "powerPotion");
+    HEALING_POTION(HealingPotion.class, "HEALING_POTION"),
+    POWER_POTION(PowerPotion.class, "POWER_POTION");
 
     private Class<? extends Potion> potionClass;
     private String type;

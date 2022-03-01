@@ -4,9 +4,11 @@ import io.muzoo.ssc.zork.Player;
 
 public abstract class Item {
 
+    private ItemType itemType;
     private String name;
 
-    public Item(String name) {
+    public Item(ItemType itemType, String name) {
+        this.itemType = itemType;
         this.name = name;
     }
 

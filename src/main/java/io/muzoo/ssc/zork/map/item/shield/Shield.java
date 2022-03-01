@@ -2,13 +2,16 @@ package io.muzoo.ssc.zork.map.item.shield;
 
 import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.map.item.Item;
+import io.muzoo.ssc.zork.map.item.ItemType;
 
 public abstract class Shield extends Item {
 
+    private ShieldType category;
     private int defense;
 
-    public Shield(String name, int defense) {
-        super(name);
+    public Shield(ShieldType category, String name, int defense) {
+        super(ItemType.SHIELD, name);
+        this.category = category;
         this.defense = defense;
     }
 

@@ -1,12 +1,6 @@
 package io.muzoo.ssc.zork.map;
 
 import io.muzoo.ssc.zork.map.item.*;
-import io.muzoo.ssc.zork.map.item.potion.PotionFactory;
-import io.muzoo.ssc.zork.map.item.potion.PotionType;
-import io.muzoo.ssc.zork.map.item.shield.ShieldFactory;
-import io.muzoo.ssc.zork.map.item.shield.ShieldType;
-import io.muzoo.ssc.zork.map.item.weapon.WeaponFactory;
-import io.muzoo.ssc.zork.map.item.weapon.WeaponType;
 import io.muzoo.ssc.zork.map.monster.Monster;
 import io.muzoo.ssc.zork.map.monster.MonsterFactory;
 import io.muzoo.ssc.zork.map.monster.MonsterType;
@@ -26,67 +20,34 @@ public class ZorkMap {
         loadMap(jsonMapObject);
     }
 
-    private void loadMap(JSONObject map) {
-        // set the map name
-        this.name = (String) map.get("name");
-        int width = ((Long) ((JSONArray) map.get("dimension")).get(0)).intValue();
-        int height = ((Long) ((JSONArray) map.get("dimension")).get(1)).intValue();
-        // set the map dimension
+    private void loadMap(JSONObject jsonObject) {
+        this.name = (String) jsonObject.get("name");
+        int width = ((Long) ((JSONArray) jsonObject.get("dimension")).get(0)).intValue();
+        int height = ((Long) ((JSONArray) jsonObject.get("dimension")).get(1)).intValue();
         this.dimension = new int[] { width, height };
-        // initialize 2d grid map
         this.rooms = new Room[height][width];
-        JSONArray roomList = (JSONArray) map.get("rooms");
-        for (Object obj : roomList) {
-            JSONObject jsonRoomObject = (JSONObject) obj;
-            // get room name
-            String roomName = (String) jsonRoomObject.get("name");
-            // get room description
-            String roomDescription = (String) jsonRoomObject.get("description");
-            // get room number
-            int roomNumber = ((Long) jsonRoomObject.get("number")).intValue();
-            // get monster inside the room (if any)
-            JSONObject jsonRoomMonsterObject = (JSONObject) jsonRoomObject.get("monster");
-            Monster monster = null;
-            if (jsonRoomMonsterObject.containsKey("type")) {
-                MonsterType monsterType = MonsterType.getMonsterType((String) jsonRoomMonsterObject.get("type"));
-                int hp = (jsonRoomMonsterObject.containsKey("hp")) ? ((Long) jsonRoomMonsterObject.get("hp")).intValue() : monsterType.getDefaultHp();
-                int attackPower = (jsonRoomMonsterObject.containsKey("attackPower")) ? ((Long) jsonRoomMonsterObject.get("attackPower")).intValue() : monsterType.getDefaultAttackPower();
-                monster = MonsterFactory.createdMonster(monsterType, hp, attackPower);
-            }
-            // get item inside the room (if any)
-            JSONObject jsonRoomItemObject = (JSONObject) jsonRoomObject.get("item");
-            Item item = null;
-            if (jsonRoomItemObject.containsKey("type")) {
-                if (jsonRoomItemObject.containsKey("damage")) {
-                    WeaponType weaponType = WeaponType.getWeaponType((String) jsonRoomItemObject.get("type"));
-                    String name = (String) jsonRoomItemObject.get("name");
-                    int damage = ((Long) jsonRoomItemObject.get("damage")).intValue();
-                    int durability = ((Long) jsonRoomItemObject.get("durability")).intValue();
-                    item = WeaponFactory.createdWeapon(weaponType, name, damage, durability);
-                } else if (jsonRoomItemObject.containsKey("defense")) {
-                    ShieldType shieldType = ShieldType.getShieldType((String) jsonRoomItemObject.get("type"));
-                    String name = (String) jsonRoomItemObject.get("name");
-                    int defense = ((Long) jsonRoomItemObject.get("defense")).intValue();
-                    item = ShieldFactory.createdShield(shieldType, name, defense);
-                } else {
-                    PotionType potionType = PotionType.getPotionType((String) jsonRoomItemObject.get("type"));
-                    String name = (String) jsonRoomItemObject.get("name");
-                    item = PotionFactory.createdPotion(potionType, name);
+        JSONArray roomGrid = (JSONArray) jsonObject.get("rooms");
+        for (int i = 0; i < height; i++) {
+            JSONArray row = (JSONArray) roomGrid.get(i);
+            for (int j = 0; j < width; j++) {
+                JSONObject jsonRoomObject = (JSONObject) row.get(j);
+                int roomNumber = ((Long) jsonRoomObject.get("number")).intValue();
+                String roomName = (String) jsonRoomObject.get("name");
+                String roomDescription = (String) jsonRoomObject.get("description");
+                Monster monster = null;
+                if (jsonRoomObject.containsKey("monster")) {
+                    JSONObject jsonMonsterObject = (JSONObject) jsonRoomObject.get("monster");
+                    MonsterType monsterType = MonsterType.getMonsterType((String) jsonMonsterObject.get("monsterType"));
+                    int hp = ((Long) jsonMonsterObject.get("hp")).intValue();
+                    int attackPower = ((Long) jsonMonsterObject.get("attackPower")).intValue();
+                    monster = MonsterFactory.createdMonster(monsterType, hp, attackPower);
                 }
-            }
-            // create a room
-            Room room = new Room(roomName, roomDescription, roomNumber, monster, item);
-            int[] indexes = getIndexesFromRoomNumber(roomNumber);
-            int row = indexes[0];
-            int col = indexes[1];
-            if (this.rooms[row][col] == null) {
-                this.rooms[row][col] = room;
-                // create doors (if any)
-                JSONObject jsonRoomDoorsObject = (JSONObject) jsonRoomObject.get("doors");
-                for (Object direction : jsonRoomDoorsObject.keySet()) {
-                    int neighborRoomNumber = ((Long) jsonRoomDoorsObject.get(direction)).intValue();
-                    this.rooms[row][col].createDoor((String) direction, neighborRoomNumber);
+                Item item = null;
+                if (jsonRoomObject.containsKey("item")) {
+                    JSONObject jsonItemObject = (JSONObject) jsonRoomObject.get("item");
+                    item = ItemFactory.createdItem(jsonItemObject);
                 }
+                this.rooms[i][j] = new Room(roomName, roomDescription, roomNumber, monster, item);
             }
         }
     }

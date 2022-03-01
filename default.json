@@ -1,0 +1,278 @@
+{
+    "map": {
+        "name": "Default Map",
+        "dimension": [4, 4],
+        "rooms": [
+            [
+                {
+                    "number": 1,
+                    "name": "the entrance hall",
+                    "description": "",
+                    "doors": {
+                        "south": 5
+                    }
+                },
+                {
+                    "number": 2,
+                    "name": "",
+                    "description": "",
+                    "doors": {},
+                    "item": {
+                        "itemType": "WEAPON",
+                        "category": "SWORD",
+                        "damage": 3,
+                        "durability": 1,
+                        "name": "Wooden Sword"
+                    }
+                },
+                {
+                    "number": 3,
+                    "name": "a kitchen",
+                    "description": "",
+                    "doors": {
+                        "east": 4,
+                        "south": 7
+                    },
+                    "monster": {
+                        "attackPower": 2,
+                        "monsterType": "GOBLIN",
+                        "hp": 10
+                    },
+                    "item": {
+                        "itemType": "WEAPON",
+                        "category": "SWORD",
+                        "damage": 5,
+                        "durability": 3,
+                        "name": "Iron Sword"
+                    }
+                },
+                {
+                    "number": 4,
+                    "name": "a buttery",
+                    "description": "",
+                    "doors": {
+                        "west": 3
+                    },
+                    "monster": {
+                        "attackPower": 2,
+                        "monsterType": "GOBLIN",
+                        "hp": 10
+                    },
+                    "item": {
+                        "itemType": "SHIELD",
+                        "category": "MAGICAL_SHIELD",
+                        "defense": 3,
+                        "name": "Magic Shield"
+                    }
+                }
+            ],
+            [
+                {
+                    "number": 5,
+                    "name": "a library",
+                    "description": "",
+                    "doors": {
+                        "east": 6,
+                        "south": 9,
+                        "north": 1
+                    },
+                    "monster": {
+                        "attackPower": 1,
+                        "monsterType": "SLIME",
+                        "hp": 10
+                    }
+                },
+                {
+                    "number": 6,
+                    "name": "the hallway",
+                    "description": "",
+                    "doors": {
+                        "east": 7,
+                        "west": 5
+                    },
+                    "monster": {
+                        "attackPower": 1,
+                        "monsterType": "SLIME",
+                        "hp": 10
+                    }
+                },
+                {
+                    "number": 7,
+                    "name": "the Great Hall",
+                    "description": "",
+                    "doors": {
+                        "east": 8,
+                        "south": 11,
+                        "north": 3,
+                        "west": 6
+                    }
+                },
+                {
+                    "number": 8,
+                    "name": "a prison",
+                    "description": "",
+                    "doors": {
+                        "west": 7
+                    },
+                    "monster": {
+                        "attackPower": 3,
+                        "monsterType": "ORC",
+                        "hp": 16
+                    }
+                }
+            ],
+            [
+                {
+                    "number": 9,
+                    "name": "a courtyard",
+                    "description": "",
+                    "doors": {
+                        "north": 5
+                    },
+                    "monster": {
+                        "attackPower": 2,
+                        "monsterType": "GOBLIN",
+                        "hp": 10
+                    }
+                },
+                {
+                    "number": 10,
+                    "name": "a solar",
+                    "description": "",
+                    "doors": {
+                        "east": 11,
+                        "north": 14
+                    },
+                    "monster": {
+                        "attackPower": 1,
+                        "monsterType": "SLIME",
+                        "hp": 10
+                    }
+                },
+                {
+                    "number": 11,
+                    "name": "a chapel",
+                    "description": "",
+                    "doors": {
+                        "south": 15,
+                        "north": 7,
+                        "west": 10
+                    }
+                },
+                {
+                    "number": 12,
+                    "name": "",
+                    "description": "",
+                    "doors": {}
+                }
+            ],
+            [
+                {
+                    "number": 13,
+                    "name": "",
+                    "description": "",
+                    "doors": {},
+                    "monster": {
+                        "attackPower": 3,
+                        "monsterType": "ORC",
+                        "hp": 20
+                    },
+                    "item": {
+                        "itemType": "WEAPON",
+                        "category": "ARROW",
+                        "damage": 3,
+                        "durability": 1,
+                        "name": "Wooden Arrow"
+                    }
+                },
+                {
+                    "number": 14,
+                    "name": "the Royal Bathroom",
+                    "description": "",
+                    "doors": {
+                        "north": 10
+                    },
+                    "item": {
+                        "itemType": "WEAPON",
+                        "category": "SWORD",
+                        "damage": 3,
+                        "durability": 1,
+                        "name": "Wooden Sword"
+                    }
+                },
+                {
+                    "number": 15,
+                    "name": "a boudoir",
+                    "description": "",
+                    "doors": {
+                        "east": 16,
+                        "north": 11
+                    },
+                    "monster": {
+                        "attackPower": 3,
+                        "monsterType": "ORC",
+                        "hp": 15
+                    },
+                    "item": {
+                        "itemType": "WEAPON",
+                        "category": "SWORD",
+                        "damage": 5,
+                        "durability": 3,
+                        "name": "Iron Sword"
+                    }
+                },
+                {
+                    "number": 16,
+                    "name": "the Throne Room",
+                    "description": "",
+                    "doors": {
+                        "west": 15
+                    },
+                    "monster": {
+                        "attackPower": 5,
+                        "monsterType": "DRAGON",
+                        "hp": 50
+                    },
+                    "item": {
+                        "itemType": "WEAPON",
+                        "category": "ARROW",
+                        "damage": 15,
+                        "durability": 1,
+                        "name": "Legendary Arrow"
+                    }
+                }
+            ]
+        ]
+    },
+    "player": {
+        "hp": 8,
+        "attackPower": 1,
+        "defense": 0,
+        "location": 8,
+        "items": [
+            {
+                "itemType": "SHIELD",
+                "category": "PHYSICAL_SHIELD",
+                "name": "Wooden Shield",
+                "defense": 5
+            },
+            {
+                "itemType": "POTION",
+                "category": "HEALING_POTION",
+                "name": "Healing Potion"
+            },
+            {
+                "itemType": "POTION",
+                "category": "POWER_POTION",
+                "name": "Power Potion"
+            },
+            {
+                "itemType": "WEAPON",
+                "category": "SWORD",
+                "name": "Diamond Sword",
+                "damage": 7,
+                "durability": 5
+            }
+        ]
+    }
+}

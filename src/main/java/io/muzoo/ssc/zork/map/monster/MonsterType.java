@@ -7,10 +7,10 @@ import io.muzoo.ssc.zork.map.monster.impl.Slime;
 
 public enum MonsterType {
 
-    SLIME(Slime.class, "slime", 10, 1),
-    GOBLIN(Goblin.class, "goblin", 10, 2),
-    ORC(Orc.class, "orc", 20, 3),
-    DRAGON(Dragon.class, "dragon", 50, 5);
+    SLIME(Slime.class, "SLIME", 10, 1),
+    GOBLIN(Goblin.class, "GOBLIN", 10, 2),
+    ORC(Orc.class, "ORC", 20, 3),
+    DRAGON(Dragon.class, "DRAGON", 50, 5);
 
     private Class<? extends Monster> monsterClass;
     private String type;

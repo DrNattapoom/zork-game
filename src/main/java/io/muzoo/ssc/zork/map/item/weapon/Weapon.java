@@ -2,14 +2,17 @@ package io.muzoo.ssc.zork.map.item.weapon;
 
 import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.map.item.Item;
+import io.muzoo.ssc.zork.map.item.ItemType;
 
 public abstract class Weapon extends Item {
 
+    private WeaponType category;
     private int damage;
     private int durability;
 
-    public Weapon(String name, int damage, int durability) {
-        super(name);
+    public Weapon(WeaponType category, String name, int damage, int durability) {
+        super(ItemType.WEAPON, name);
+        this.category = category;
         this.damage = damage;
         this.durability = durability;
     }

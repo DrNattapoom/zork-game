@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class Game {
 
-    private static final String DEFAULT_PATH = "defaultMap.json";
+    private static final String DEFAULT_PATH = "default.json";
 
     private Map<String, String> savePoints;
 
@@ -79,11 +79,11 @@ public class Game {
         this.scanner.close();
     }
 
-    public void load(String data) {
+    public void load(String filePath) {
         JSONParser parser = new JSONParser();
         Object object = null;
         try {
-            object = parser.parse(new FileReader(data));
+            object = parser.parse(new FileReader(filePath));
         } catch (FileNotFoundException e) {
             // catch an exception thrown by FileReader
             System.out.println("[load]");
@@ -101,15 +101,40 @@ public class Game {
             e.printStackTrace();
         }
         JSONObject jsonGameObject = (JSONObject) object;
-        // get json map object
         JSONObject jsonMapObject = (JSONObject) jsonGameObject.get("map");
         this.map = new ZorkMap(jsonMapObject);
-        // get json player object
         JSONObject jsonPlayerObject = (JSONObject) jsonGameObject.get("player");
-        int hp = ((Long) jsonPlayerObject.get("hp")).intValue();
-        int attackPower = ((Long) jsonPlayerObject.get("attackPower")).intValue();
-        int location = ((Long) jsonPlayerObject.get("location")).intValue();
-        this.player = new Player(hp, attackPower, location);
+        this.player = new Player(jsonPlayerObject);
+//        JSONParser parser = new JSONParser();
+//        Object object = null;
+//        try {
+//            object = parser.parse(new FileReader(data));
+//        } catch (FileNotFoundException e) {
+//            // catch an exception thrown by FileReader
+//            System.out.println("[load]");
+//            System.out.println("FileNotFoundException: " + e.getMessage());
+//            e.printStackTrace();
+//        } catch (ParseException e) {
+//            // catch an exception thrown by parser.parse
+//            System.out.println("[load]");
+//            System.out.println("ParseException: " + e.getMessage());
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            // catch an exception thrown by parser.parse
+//            System.out.println("[load]");
+//            System.out.println("IOException: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//        JSONObject jsonGameObject = (JSONObject) object;
+//        // get json map object
+//        JSONObject jsonMapObject = (JSONObject) jsonGameObject.get("map");
+//        this.map = new ZorkMap(jsonMapObject);
+//        // get json player object
+//        JSONObject jsonPlayerObject = (JSONObject) jsonGameObject.get("player");
+//        int hp = ((Long) jsonPlayerObject.get("hp")).intValue();
+//        int attackPower = ((Long) jsonPlayerObject.get("attackPower")).intValue();
+//        int location = ((Long) jsonPlayerObject.get("location")).intValue();
+//        this.player = new Player(hp, attackPower, location);
     }
 
     public String getDefaultPath() {
