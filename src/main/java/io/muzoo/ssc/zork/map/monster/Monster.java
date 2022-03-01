@@ -5,7 +5,6 @@ import io.muzoo.ssc.zork.Player;
 
 import org.apache.commons.lang3.StringUtils;
 
-import javax.sound.midi.Soundbank;
 import java.util.Random;
 
 public abstract class Monster extends Mortal {

@@ -10,11 +10,15 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Game {
 
     private static final String DEFAULT_PATH = "defaultMap.json";
+
+    private Map<String, String> savePoints;
 
     private Scanner scanner;
     private ZorkMap map;
@@ -24,6 +28,8 @@ public class Game {
 
     public Game() {
         this.scanner = new Scanner(System.in);
+        this.savePoints = new HashMap<>();
+        this.savePoints.put("default", "defaultMap.json");
         this.exit = false;
     }
 
@@ -108,6 +114,10 @@ public class Game {
 
     public String getDefaultPath() {
         return DEFAULT_PATH;
+    }
+
+    public Map<String, String> getSavePoints() {
+        return savePoints;
     }
 
 }

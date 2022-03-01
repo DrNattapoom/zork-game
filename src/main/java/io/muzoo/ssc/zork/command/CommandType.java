@@ -14,6 +14,8 @@ public enum CommandType {
     HELP(HelpCommand.class, "help", "print all commands"),
     QUIT(QuitCommand.class, "quit", "end the current game and return to command prompt to let user choose the map or load from saved point again"),
     PLAY(PlayCommand.class, "play", "play new game, this command only available at when start the game"),
+    LOAD(LoadCommand.class, "load", "load game state from saved point, this command only available at when start the game"),
+    SAVE(SaveCommand.class, "save", "load game state from saved point, this command only available at when start the game"),
     EXIT(ExitCommand.class, "exit", "exit whole game, this command only available at when start the game");
 
     private Class<? extends Command> commandClass;
