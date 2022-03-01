@@ -141,7 +141,7 @@
                     "description": "",
                     "doors": {
                         "east": 11,
-                        "north": 14
+                        "south": 14
                     },
                     "monster": {
                         "attackPower": 1,

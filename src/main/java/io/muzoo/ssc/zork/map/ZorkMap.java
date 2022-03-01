@@ -8,8 +8,6 @@ import io.muzoo.ssc.zork.map.monster.MonsterType;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.Arrays;
-
 public class ZorkMap {
 
     private Room[][] rooms;
@@ -48,6 +46,11 @@ public class ZorkMap {
                     item = ItemFactory.createdItem(jsonItemObject);
                 }
                 this.rooms[i][j] = new Room(roomName, roomDescription, roomNumber, monster, item);
+                JSONObject jsonDoorsObject = (JSONObject) jsonRoomObject.get("doors");
+                for (Object direction : jsonDoorsObject.keySet()) {
+                    int neighborRoomNumber = ((Long) jsonDoorsObject.get(direction)).intValue();
+                    this.rooms[i][j].createDoor((String) direction, neighborRoomNumber);
+                }
             }
         }
     }
@@ -57,10 +60,6 @@ public class ZorkMap {
         int row = (roomNumber - 1) / width;
         int col = (roomNumber - 1) % width;
         return new int[] { row, col };
-    }
-
-    public Room[][] getRooms() {
-        return rooms;
     }
 
     public Room getRoom(int roomNumber) {
@@ -74,50 +73,66 @@ public class ZorkMap {
         return name;
     }
 
-    public int[] getDimension() {
-        return dimension;
-    }
-
     public void printMap() {
         int width = this.dimension[0];
         int height = this.dimension[1];
-        char[][] toPrint = new char[height*10][width*10];
-        for (char[] row : toPrint) {
-            Arrays.fill(row, '=');
-        }
-        for (int row = 0; row < rooms.length; row++) {
-            for (int col = 0; col < rooms[row].length; col++) {
-                Room room = this.rooms[row][col];
-                for (String direction : room.getDoors().keySet()) {
-                    switch (direction) {
-                        case "north":
-                            for (int i = 0; i < 6; i++) {
-                                for (int j = 0; j < 2; j++) {
-                                    toPrint[i + row*10][j + 4 + col*10] = ' ';
-                                }
-                            }
-                            break;
-                        case "south":
-                            for (int i = -2; i < 4; i++) {
-                                for (int j = 0; j < 2; j++) {
-                                    toPrint[i + row*10 + 6][j + 4 + col*10] = ' ';
-                                }
-                            }
-                            break;
-                        case "east":
-                            for (int i = 0; i < 2; i++) {
-                                for (int j = -2; j < 4; j++) {
-                                    toPrint[i + row*10 + 4][j + 6 + col*10] = ' ';
-                                }
-                            }
-                            break;
-                        case "west":
-                            for (int i = 0; i < 2; i++) {
-                                for (int j = 0; j < 6; j++) {
-                                    toPrint[i + row*10 + 4][j + col*10] = ' ';
-                                }
-                            }
-                            break;
+        char[][] toPrint = new char[height*4][width*9];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                Room room = this.rooms[i][j];
+                if (!room.getDoors().keySet().isEmpty()) {
+                    // ┌───────┐
+                    // │       │
+                    // │       │
+                    // └───────┘
+                    char[][] normalRoom = new char[][] {
+                            "┌───────┐".toCharArray(),
+                            "│       │".toCharArray(),
+                            "│       │".toCharArray(),
+                            "└───────┘".toCharArray()
+                    };
+                    for (int k = 0; k < normalRoom.length; k++) {
+                        for (int l = 0; l < normalRoom[0].length; l++) {
+                            toPrint[i*4 + k][j*9 + l] = normalRoom[k][l];
+                        }
+                    }
+                    for (String direction : room.getDoors().keySet()) {
+                        switch (direction) {
+                            case "north":
+                                // ┌──┘ └──┐
+                                // │       │
+                                // │       │
+                                // └───────┘
+                                toPrint[i*4][j*9 + 3] = '┘';
+                                toPrint[i*4][j*9 + 4] = ' ';
+                                toPrint[i*4][j*9 + 5] = '└';
+                                break;
+                            case "south":
+                                // ┌───────┐
+                                // │       │
+                                // │       │
+                                // └──┐ ┌──┘
+                                toPrint[i*4 + 3][j*9 + 3] = '┐';
+                                toPrint[i*4 + 3][j*9 + 4] = ' ';
+                                toPrint[i*4 + 3][j*9 + 5] = '┌';
+                                break;
+                            case "west":
+                                // ┌───────┐
+                                // ┘       │
+                                // ┐       │
+                                // └───────┘
+                                toPrint[i*4 + 1][j*9] = '┘';
+                                toPrint[i*4 + 2][j*9] = '┐';
+                                break;
+                            case "east":
+                                // ┌───────┐
+                                // │       └
+                                // │       ┌
+                                // └───────┘
+                                toPrint[i*4 + 1][j*9 + 8] = '└';
+                                toPrint[i*4 + 2][j*9 + 8] = '┌';
+                                break;
+                        }
                     }
                 }
             }
