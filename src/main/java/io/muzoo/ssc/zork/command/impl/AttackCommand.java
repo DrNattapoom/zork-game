@@ -40,15 +40,17 @@ public class AttackCommand implements Command {
                     if (tobeUsed != null) {
                         Player player = game.getPlayer();
                         Weapon weapon = (Weapon) tobeUsed;
-                        System.out.println(String.format("Attack %s with %s", StringUtils.capitalize(enemy.getMonsterType().getType()), weapon));
+                        String monsterName = StringUtils.capitalize(enemy.getMonsterType().getType().toLowerCase());
+                        System.out.println(String.format("Attack %s with %s", monsterName, weapon));
                         player.attackWith(weapon, enemy);
                         if (enemy.getHp() <= 0) {
-                            System.out.println(StringUtils.capitalize(enemy.getMonsterType().getType()) + " is dead");
+                            System.out.println(monsterName + " is dead.");
                             game.getMap().getRoom(game.getPlayer().getLocation()).setMonster(null);
                             player.setAttackPower(player.getAttackPower() + 1);
-                            System.out.println("You leveled up");
-                            System.out.println("Your Attack Power is now " + player.getAttackPower());
+                            System.out.println("Leveled up!");
+                            System.out.println(String.format("Your Attack Power is now %d.", player.getAttackPower()));
                         } else {
+                            System.out.println(String.format("%s's HP remains %d. \n", monsterName, enemy.getHp()));
                             enemy.attack(player);
                         }
                     } else {

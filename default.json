@@ -71,7 +71,7 @@
                         "north": 1
                     },
                     "monster": {
-                        "attackPower": 1,
+                        "attackPower": 2,
                         "monsterType": "SLIME",
                         "hp": 5
                     },
@@ -91,7 +91,7 @@
                         "west": 5
                     },
                     "monster": {
-                        "attackPower": 1,
+                        "attackPower": 2,
                         "monsterType": "SLIME",
                         "hp": 5
                     },
@@ -163,7 +163,7 @@
                         "south": 14
                     },
                     "monster": {
-                        "attackPower": 1,
+                        "attackPower": 2,
                         "monsterType": "SLIME",
                         "hp": 5
                     }, 
@@ -212,7 +212,7 @@
                         "north": 10
                     },
                     "monster": {
-                        "attackPower": 1,
+                        "attackPower": 2,
                         "monsterType": "SLIME",
                         "hp": 5
                     }

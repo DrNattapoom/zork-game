@@ -26,15 +26,17 @@ public class SaveCommand implements Command {
                 JSONObject jsonPlayerObject = getJSONObject(game.getPlayer());
                 jsonSavePointObject.put("map", jsonMapObject);
                 jsonSavePointObject.put("player", jsonPlayerObject);
+                String fileName = argument + ".json";
                 FileWriter file = null;
                 try {
-                    file = new FileWriter(argument + ".json");
+                    file = new FileWriter(fileName);
                     file.write(jsonSavePointObject.toJSONString());
                 } catch (IOException e) {
                     e.printStackTrace();
                 } finally {
                     IOUtils.closeQuietly(file);
                 }
+                game.getSavePoints().put(argument, fileName);
             }
         } else {
             System.out.println("This command is only available while playing the game");
