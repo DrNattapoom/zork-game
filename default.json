@@ -7,16 +7,10 @@
                 {
                     "number": 1,
                     "name": "the entrance hall",
-                    "description": "",
+                    "description": "There is an item here.",
                     "doors": {
                         "south": 5
-                    }
-                },
-                {
-                    "number": 2,
-                    "name": "",
-                    "description": "",
-                    "doors": {},
+                    },
                     "item": {
                         "itemType": "WEAPON",
                         "category": "SWORD",
@@ -26,9 +20,15 @@
                     }
                 },
                 {
+                    "number": 2,
+                    "name": "",
+                    "description": "",
+                    "doors": {}
+                },
+                {
                     "number": 3,
                     "name": "a kitchen",
-                    "description": "",
+                    "description": "There is a sword of a fallen knight, but, be careful, a goblin is here.",
                     "doors": {
                         "east": 4,
                         "south": 7
@@ -49,7 +49,7 @@
                 {
                     "number": 4,
                     "name": "a buttery",
-                    "description": "",
+                    "description": "It seems like a goblin loves liquor.",
                     "doors": {
                         "west": 3
                     },
@@ -57,12 +57,6 @@
                         "attackPower": 2,
                         "monsterType": "GOBLIN",
                         "hp": 10
-                    },
-                    "item": {
-                        "itemType": "SHIELD",
-                        "category": "MAGICAL_SHIELD",
-                        "defense": 3,
-                        "name": "Magic Shield"
                     }
                 }
             ],
@@ -70,7 +64,7 @@
                 {
                     "number": 5,
                     "name": "a library",
-                    "description": "",
+                    "description": "There is a slime here. A piece of bookshelf here can be used as a shield",
                     "doors": {
                         "east": 6,
                         "south": 9,
@@ -79,13 +73,19 @@
                     "monster": {
                         "attackPower": 1,
                         "monsterType": "SLIME",
-                        "hp": 10
+                        "hp": 5
+                    },
+                    "item": {
+                        "itemType": "SHIELD",
+                        "category": "PHYSICAL_SHIELD",
+                        "defense": 3,
+                        "name": "Wooden Shield"
                     }
                 },
                 {
                     "number": 6,
                     "name": "the hallway",
-                    "description": "",
+                    "description": "There is a sword dropped here, but do not let your guard down. There is a monster here",
                     "doors": {
                         "east": 7,
                         "west": 5
@@ -93,24 +93,36 @@
                     "monster": {
                         "attackPower": 1,
                         "monsterType": "SLIME",
-                        "hp": 10
+                        "hp": 5
+                    },
+                    "item": {
+                        "itemType": "WEAPON",
+                        "category": "SWORD",
+                        "damage": 5,
+                        "durability": 3,
+                        "name": "Iron Sword"
                     }
                 },
                 {
                     "number": 7,
                     "name": "the Great Hall",
-                    "description": "",
+                    "description": "It seems like there is an item here.",
                     "doors": {
                         "east": 8,
                         "south": 11,
                         "north": 3,
                         "west": 6
+                    },
+                    "item": {
+                        "itemType": "POTION",
+                        "category": "HEALING_POTION",
+                        "name": "Healing Potion"
                     }
                 },
                 {
                     "number": 8,
                     "name": "a prison",
-                    "description": "",
+                    "description": "Be careful. There is a strong monster here. Hurry and pick up the weapon here.",
                     "doors": {
                         "west": 7
                     },
@@ -118,6 +130,13 @@
                         "attackPower": 3,
                         "monsterType": "ORC",
                         "hp": 16
+                    },
+                    "item": {
+                        "damage": 7,
+                        "itemType": "WEAPON",
+                        "durability": 5,
+                        "name": "Diamond Sword",
+                        "category": "SWORD"
                     }
                 }
             ],
@@ -125,7 +144,7 @@
                 {
                     "number": 9,
                     "name": "a courtyard",
-                    "description": "",
+                    "description": "Be careful. There is a goblin here.",
                     "doors": {
                         "north": 5
                     },
@@ -138,7 +157,7 @@
                 {
                     "number": 10,
                     "name": "a solar",
-                    "description": "",
+                    "description": "There is an item dropped here, but do not let your guard down. There is a monster here.",
                     "doors": {
                         "east": 11,
                         "south": 14
@@ -146,17 +165,29 @@
                     "monster": {
                         "attackPower": 1,
                         "monsterType": "SLIME",
-                        "hp": 10
+                        "hp": 5
+                    }, 
+                    "item": {
+                        "itemType": "POTION",
+                        "name": "Power Potion",
+                        "category": "POWER_POTION"
                     }
                 },
                 {
                     "number": 11,
                     "name": "a chapel",
-                    "description": "",
+                    "description": "A holy place where the monsters cannot lurk in. This is where a lengendary item appears.",
                     "doors": {
                         "south": 15,
                         "north": 7,
                         "west": 10
+                    },
+                    "item": {
+                        "itemType": "WEAPON",
+                        "category": "ARROW",
+                        "damage": 15,
+                        "durability": 1,
+                        "name": "Legendary Arrow"
                     }
                 },
                 {
@@ -171,39 +202,25 @@
                     "number": 13,
                     "name": "",
                     "description": "",
-                    "doors": {},
-                    "monster": {
-                        "attackPower": 3,
-                        "monsterType": "ORC",
-                        "hp": 20
-                    },
-                    "item": {
-                        "itemType": "WEAPON",
-                        "category": "ARROW",
-                        "damage": 3,
-                        "durability": 1,
-                        "name": "Wooden Arrow"
-                    }
+                    "doors": {}
                 },
                 {
                     "number": 14,
                     "name": "the Royal Bathroom",
-                    "description": "",
+                    "description": "There is a slime in the bathroom.",
                     "doors": {
                         "north": 10
                     },
-                    "item": {
-                        "itemType": "WEAPON",
-                        "category": "SWORD",
-                        "damage": 3,
-                        "durability": 1,
-                        "name": "Wooden Sword"
+                    "monster": {
+                        "attackPower": 1,
+                        "monsterType": "SLIME",
+                        "hp": 5
                     }
                 },
                 {
                     "number": 15,
                     "name": "a boudoir",
-                    "description": "",
+                    "description": "Be careful. There is an orc here. Hurry and pick up the dropped sword might be a good idea.",
                     "doors": {
                         "east": 16,
                         "north": 11
@@ -211,7 +228,7 @@
                     "monster": {
                         "attackPower": 3,
                         "monsterType": "ORC",
-                        "hp": 15
+                        "hp": 20
                     },
                     "item": {
                         "itemType": "WEAPON",
@@ -224,7 +241,7 @@
                 {
                     "number": 16,
                     "name": "the Throne Room",
-                    "description": "",
+                    "description": "Finally, the dragon has been found. And next to it is the legendary sword, the Excalibur.",
                     "doors": {
                         "west": 15
                     },
@@ -235,44 +252,20 @@
                     },
                     "item": {
                         "itemType": "WEAPON",
-                        "category": "ARROW",
-                        "damage": 15,
-                        "durability": 1,
-                        "name": "Legendary Arrow"
+                        "category": "SWORD",
+                        "damage": 20,
+                        "durability": 2,
+                        "name": "Excalibur"
                     }
                 }
             ]
         ]
     },
     "player": {
-        "hp": 8,
+        "hp": 10,
         "attackPower": 1,
         "defense": 0,
-        "location": 8,
-        "items": [
-            {
-                "itemType": "SHIELD",
-                "category": "PHYSICAL_SHIELD",
-                "name": "Wooden Shield",
-                "defense": 5
-            },
-            {
-                "itemType": "POTION",
-                "category": "HEALING_POTION",
-                "name": "Healing Potion"
-            },
-            {
-                "itemType": "POTION",
-                "category": "POWER_POTION",
-                "name": "Power Potion"
-            },
-            {
-                "itemType": "WEAPON",
-                "category": "SWORD",
-                "name": "Diamond Sword",
-                "damage": 7,
-                "durability": 5
-            }
-        ]
+        "location": 1,
+        "items": []
     }
 }
