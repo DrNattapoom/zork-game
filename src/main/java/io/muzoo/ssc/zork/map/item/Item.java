@@ -1,6 +1,7 @@
 package io.muzoo.ssc.zork.map.item;
 
 import io.muzoo.ssc.zork.Player;
+import io.muzoo.ssc.zork.map.monster.Monster;
 
 public abstract class Item {
 
@@ -24,6 +25,6 @@ public abstract class Item {
         return name;
     }
 
-    public abstract void activate(Player player);
+    public abstract void activate(Player player, Monster monster);
 
 }

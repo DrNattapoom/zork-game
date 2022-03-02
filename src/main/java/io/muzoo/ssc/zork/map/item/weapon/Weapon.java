@@ -3,6 +3,9 @@ package io.muzoo.ssc.zork.map.item.weapon;
 import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.ItemType;
+import io.muzoo.ssc.zork.map.monster.Monster;
+
+import java.util.Random;
 
 public abstract class Weapon extends Item {
 
@@ -18,14 +21,10 @@ public abstract class Weapon extends Item {
     }
 
     @Override
-    public void activate(Player player) {
+    public void activate(Player player, Monster monster) {
         int originalAttackPower = player.getAttackPower();
         int newAttackPower = originalAttackPower + this.getDamage();
         player.setAttackPower(newAttackPower);
-    }
-
-    public int getDamage() {
-        return damage;
     }
 
     public int getDurability() {
@@ -34,6 +33,10 @@ public abstract class Weapon extends Item {
 
     public void setDurability(int durability) {
         this.durability = durability;
+    }
+
+    public int getDamage() {
+        return damage;
     }
 
 }

@@ -3,6 +3,7 @@ package io.muzoo.ssc.zork.map.item.shield.impl;
 import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.map.item.shield.Shield;
 import io.muzoo.ssc.zork.map.item.shield.ShieldType;
+import io.muzoo.ssc.zork.map.monster.Monster;
 
 public class MagicalShield extends Shield {
 
@@ -11,7 +12,7 @@ public class MagicalShield extends Shield {
     }
 
     @Override
-    public void activate(Player player) {
+    public void activate(Player player, Monster monster) {
         if (player.getMana() < this.getDefense()) {
             System.out.println("Unfortunately, your mana is not sufficient.");
             System.out.println("This item is wasted.");

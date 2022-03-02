@@ -36,7 +36,7 @@ public class UseCommand implements Command {
                 if (tobeUsed != null) {
                     System.out.println("Using " + tobeUsed + " ...");
                     System.out.println(tobeUsed + " used.");
-                    tobeUsed.activate(player);
+                    tobeUsed.activate(player, game.getMap().getRoom(player.getLocation()).getMonster());
                     player.getItems().remove(tobeUsed);
                 } else {
                     System.out.println("There is no such item");

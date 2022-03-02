@@ -3,6 +3,7 @@ package io.muzoo.ssc.zork.map.item.shield;
 import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.ItemType;
+import io.muzoo.ssc.zork.map.monster.Monster;
 
 public abstract class Shield extends Item {
 
@@ -16,7 +17,7 @@ public abstract class Shield extends Item {
     }
 
     @Override
-    public void activate(Player player) {
+    public void activate(Player player, Monster monster) {
         int originalDefense = player.getDefense();
         player.setDefense(originalDefense + this.getDefense());
     }

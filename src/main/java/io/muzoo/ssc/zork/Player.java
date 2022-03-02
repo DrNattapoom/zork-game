@@ -3,6 +3,7 @@ package io.muzoo.ssc.zork;
 import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.ItemFactory;
 import io.muzoo.ssc.zork.map.item.weapon.Weapon;
+import io.muzoo.ssc.zork.map.monster.Monster;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONArray;
@@ -100,7 +101,7 @@ public class Player extends Mortal {
 
     public void attackWith(Weapon weapon, Mortal enemy) {
         int originalAttackPower = this.getAttackPower();
-        weapon.activate(this);
+        weapon.activate(this, (Monster) enemy);
         attack(enemy);
         weapon.setDurability(weapon.getDurability() - 1);
         if (weapon.getDurability() <= 0) {
