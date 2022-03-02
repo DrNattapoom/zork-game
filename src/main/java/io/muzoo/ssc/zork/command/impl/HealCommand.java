@@ -19,8 +19,11 @@ public class HealCommand implements Command {
                     player.setMana(0);
                 }
             } else {
-                player.setHp(player.getHp() + MANA_COST);
+                System.out.println("Healing ...");
+                int newHP = Math.min(player.getHp() + MANA_COST, player.getMaxHp());
+                player.setHp(newHP);
                 player.setMana(player.getMana() - MANA_COST);
+                System.out.println("Your HP is now " + player.getHp());
             }
         } else {
             System.out.println("This command is only available while playing the game");

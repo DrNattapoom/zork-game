@@ -9,7 +9,7 @@ public enum CommandType {
     USE(UseCommand.class, "use", "use the item that is not weapon in the current room, this command only available while playing game"),
     DROP(DropCommand.class, "drop", "drop the item of choice that the player currently carries, this command only available while playing game"),
     ATTACK(AttackCommand.class, "attack with", "attack a monster in the current room, this command only available while playing game"),
-    HEAL(HealCommand.class, "heal", String.format("heal player by %d HP with a cost of %d mana, if you use this command with insufficient mana, your mana will be wasted, this command only available while playing game", HealCommand.getManaCost(), HealCommand.getManaCost())),
+    HEAL(HealCommand.class, "heal", String.format("heal player by %d HP with a cost of %d mana, player's HP will not exceed player's Max HP, if you use this command with insufficient mana, your mana will be wasted, this command only available while playing game", HealCommand.getManaCost(), HealCommand.getManaCost())),
     TELEPORT(TeleportCommand.class, "teleport", String.format("teleport player to a random room with a cost of %d mana, if you use this command with insufficient mana, your mana will be wasted, this command only available while playing game", TeleportCommand.getManaCost())),
     GO(GoCommand.class, "go", "move player to the room as specified by the direction, e.g. north, east, west, south, this command only available while playing game"),
     MAP(MapCommand.class, "map", "print 2D map using ascii art, this command only available while playing game"),
