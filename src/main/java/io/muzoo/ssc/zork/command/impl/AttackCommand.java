@@ -7,6 +7,7 @@ import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.weapon.Weapon;
 import io.muzoo.ssc.zork.map.monster.Monster;
 
+import io.muzoo.ssc.zork.map.monster.impl.Dragon;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -49,9 +50,24 @@ public class AttackCommand implements Command {
                             player.setAttackPower(player.getAttackPower() + 1);
                             System.out.println("Leveled up!");
                             System.out.println(String.format("Your Attack Power is now %d.", player.getAttackPower()));
+                            if (enemy instanceof Dragon) {
+                                System.out.println("\nCongratulations!");
+                                System.out.println("The dragon has been slayed.");
+                                System.out.println("The mission is completed. You won!\n");
+                                new QuitCommand().execute(game, argument);
+                                new ExitCommand().execute(game, argument);
+                            }
                         } else {
                             System.out.println(String.format("%s's HP remains %d. \n", monsterName, enemy.getHp()));
                             enemy.attack(player);
+                            if (player.getHp() <= 0) {
+                                System.out.println("\nYou died.");
+                                System.out.println("You lose!");
+                                System.out.println("Try again next time.\n");
+                                new QuitCommand().execute(game, argument);
+                            } else {
+                                System.out.println("Your HP is now " + player.getHp());
+                            }
                         }
                     } else {
                         System.out.println("There is no such item");

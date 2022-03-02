@@ -36,7 +36,6 @@ public abstract class Monster extends Mortal {
         if (currentPlayerDefense > 0) {
             System.out.println("Your defense remains " + Math.max(remainingDefense, 0));
         }
-        System.out.println("Your HP is now " + player.getHp());
     }
 
     @Override
