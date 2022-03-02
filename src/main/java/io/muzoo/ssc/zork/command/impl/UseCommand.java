@@ -43,7 +43,7 @@ public class UseCommand implements Command {
         if (StringUtils.isBlank(argument)) {
             System.out.println(question);
             for (int i = 0; i < items.size(); i++) {
-                System.out.println(String.format("(%x) %s ", i + 1, items.get(i)));
+                System.out.println(String.format("(%d) %s ", i + 1, items.get(i)));
             }
             Scanner scanner = new Scanner(System.in);
             argument = scanner.nextLine();
