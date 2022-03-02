@@ -62,7 +62,7 @@ public class Game {
             "You are an adventurer who are hired by a king whose castle was seized by a dragon. Your task is to reclaim the castle. \n" +
             "This is, however, not an easy feat because the vicious aura of the dragon has lured many monsters into the area. \n"
         );
-        System.out.println("Goal: defeat all the monsters and slay the dragon to reclaim the castle \n");
+        System.out.println("Goal: slay the dragon to reclaim the castle \n");
     }
 
     public Player getPlayer() {
