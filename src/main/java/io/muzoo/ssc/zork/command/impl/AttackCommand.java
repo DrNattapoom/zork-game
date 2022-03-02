@@ -10,10 +10,7 @@ import io.muzoo.ssc.zork.map.monster.impl.Dragon;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AttackCommand implements Command {
@@ -60,6 +57,13 @@ public class AttackCommand implements Command {
                             }
                         } else {
                             System.out.println(String.format("%s's HP remains %d. \n", monsterName, enemy.getHp()));
+                            System.out.println(String.format("%s attacks back", enemy));
+                            System.out.println("Do you want to use anything? [yes/no]");
+                            Scanner scanner = new Scanner(System.in);
+                            String answer = scanner.nextLine();
+                            if (answer.equals("yes")) {
+                                new UseCommand().execute(game, argument);
+                            }
                             enemy.attack(player);
                             if (player.getHp() <= 0) {
                                 System.out.println("\nYou died.");

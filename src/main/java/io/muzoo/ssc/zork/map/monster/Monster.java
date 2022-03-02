@@ -22,7 +22,6 @@ public abstract class Monster extends Mortal {
 
     @Override
     public void attack(Mortal enemy) {
-        System.out.println(String.format("%s attacks back", this));
         Player player = (Player) enemy;
         int currentPlayerDefense = player.getDefense();
         int damage = new Random().nextInt(this.getAttackPower()) + 1;

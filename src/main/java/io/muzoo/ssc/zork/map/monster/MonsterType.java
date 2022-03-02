@@ -7,21 +7,19 @@ import io.muzoo.ssc.zork.map.monster.impl.Slime;
 
 public enum MonsterType {
 
-    SLIME(Slime.class, "SLIME", 10, 1),
-    GOBLIN(Goblin.class, "GOBLIN", 10, 2),
-    ORC(Orc.class, "ORC", 20, 3),
-    DRAGON(Dragon.class, "DRAGON", 50, 5);
+    SLIME(Slime.class, "SLIME"),
+    GOBLIN(Goblin.class, "GOBLIN"),
+    ORC(Orc.class, "ORC"),
+    DRAGON(Dragon.class, "DRAGON");
 
     private Class<? extends Monster> monsterClass;
     private String type;
     private int defaultHp;
     private int defaultAttackPower;
 
-    MonsterType(Class<? extends Monster> monsterClass, String type, int defaultHp, int defaultAttackPower) {
+    MonsterType(Class<? extends Monster> monsterClass, String type) {
         this.monsterClass = monsterClass;
         this.type = type;
-        this.defaultHp = defaultHp;
-        this.defaultAttackPower = defaultAttackPower;
     }
 
     public Class<? extends Monster> getMonsterClass() {
@@ -30,14 +28,6 @@ public enum MonsterType {
 
     public String getType() {
         return type;
-    }
-
-    public int getDefaultHp() {
-        return defaultHp;
-    }
-
-    public int getDefaultAttackPower() {
-        return defaultAttackPower;
     }
 
     public static MonsterType getMonsterType(String type) {
