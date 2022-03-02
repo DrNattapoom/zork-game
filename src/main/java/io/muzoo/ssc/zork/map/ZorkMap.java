@@ -69,6 +69,14 @@ public class ZorkMap {
         return rooms[row][col];
     }
 
+    public Room[][] getRooms() {
+        return rooms;
+    }
+
+    public int[] getDimension() {
+        return dimension;
+    }
+
     public String getName() {
         return name;
     }

@@ -14,7 +14,7 @@ public class MagicalShield extends Shield {
     @Override
     public void activate(Player player, Monster monster) {
         if (player.getMana() < this.getDefense()) {
-            System.out.println("Unfortunately, your mana is not sufficient.");
+            System.out.println("Unfortunately, your mana is insufficient.");
             System.out.println("This item is wasted.");
         } else {
             int originalMana = player.getMana();

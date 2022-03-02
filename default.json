@@ -271,14 +271,7 @@
         "attackPower": 1,
         "defense": 0,
         "mana": 0,
-        "location": 16,
-        "items": [{
-            "itemType": "WEAPON",
-            "category": "ARROW",
-            "damage": 15,
-            "durability": 1,
-            "name": "Legendary Arrow",
-            "isLegendary": true
-        }]
+        "location": 1,
+        "items": []
     }
 }
