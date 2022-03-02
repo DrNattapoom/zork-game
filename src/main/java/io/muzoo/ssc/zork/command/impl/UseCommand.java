@@ -23,16 +23,7 @@ public class UseCommand implements Command {
             if (usableItems.isEmpty()) {
                 System.out.println("There is no item to be used");
             } else {
-                Map<String, Item> usableItemsMap = usableItems.stream().collect(Collectors.toMap(Item::getName, item -> item));
-                if (StringUtils.isBlank(argument)) {
-                    System.out.println("What do you want to use?");
-                    for (int i = 0; i < usableItems.size(); i++) {
-                        System.out.println(String.format("(%x) %s ", i + 1, usableItems.get(i)));
-                    }
-                    Scanner scanner = new Scanner(System.in);
-                    argument = scanner.nextLine();
-                }
-                Item tobeUsed = (isValidIndex(usableItems, argument)) ? usableItems.get(Integer.parseInt(argument) - 1) : usableItemsMap.get(argument);
+                Item tobeUsed = getWantedItem(usableItems, argument, "What do you want to use?");
                 if (tobeUsed != null) {
                     System.out.println("Using " + tobeUsed + " ...");
                     System.out.println(tobeUsed + " used.");
@@ -47,10 +38,23 @@ public class UseCommand implements Command {
         }
     }
 
-    private boolean isValidIndex(List<Item> usableItems, String argument) {
+    private Item getWantedItem(List<Item> items, String argument, String question) {
+        Map<String, Item> itemsMap = items.stream().collect(Collectors.toMap(Item::getName, item -> item));
+        if (StringUtils.isBlank(argument)) {
+            System.out.println(question);
+            for (int i = 0; i < items.size(); i++) {
+                System.out.println(String.format("(%x) %s ", i + 1, items.get(i)));
+            }
+            Scanner scanner = new Scanner(System.in);
+            argument = scanner.nextLine();
+        }
+        return (isValidIndex(items, argument)) ? items.get(Integer.parseInt(argument) - 1) : itemsMap.get(argument);
+    }
+
+    private boolean isValidIndex(List<Item> items, String argument) {
         try {
             int index = Integer.parseInt(argument) - 1;
-            return index >= 0 && index < usableItems.size();
+            return index >= 0 && index < items.size();
         } catch (NumberFormatException e) {
             return false;
         }

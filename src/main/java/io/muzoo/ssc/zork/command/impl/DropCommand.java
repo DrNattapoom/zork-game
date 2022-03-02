@@ -20,16 +20,7 @@ public class DropCommand implements Command {
             if (items.isEmpty()) {
                 System.out.println("There is no item to be dropped");
             } else {
-                Map<String, Item> itemsMap = items.stream().collect(Collectors.toMap(Item::getName, item -> item));
-                if (StringUtils.isBlank(argument)) {
-                    System.out.println("What do you want to drop?");
-                    for (int i = 0; i < items.size(); i++) {
-                        System.out.println(String.format("(%x) %s ", i + 1, items.get(i)));
-                    }
-                    Scanner scanner = new Scanner(System.in);
-                    argument = scanner.nextLine();
-                }
-                Item toBeDropped = (isValidIndex(items, argument)) ? items.get(Integer.parseInt(argument) - 1) : itemsMap.get(argument);
+                Item toBeDropped = getWantedItem(items, argument, "What do you want to drop?");
                 if (toBeDropped != null) {
                     System.out.println("Dropping " + toBeDropped + " ...");
                     items.remove(toBeDropped);
@@ -41,6 +32,19 @@ public class DropCommand implements Command {
         } else {
             System.out.println("This command is only available while playing the game");
         }
+    }
+
+    private Item getWantedItem(List<Item> items, String argument, String question) {
+        Map<String, Item> itemsMap = items.stream().collect(Collectors.toMap(Item::getName, item -> item));
+        if (StringUtils.isBlank(argument)) {
+            System.out.println(question);
+            for (int i = 0; i < items.size(); i++) {
+                System.out.println(String.format("(%x) %s ", i + 1, items.get(i)));
+            }
+            Scanner scanner = new Scanner(System.in);
+            argument = scanner.nextLine();
+        }
+        return (isValidIndex(items, argument)) ? items.get(Integer.parseInt(argument) - 1) : itemsMap.get(argument);
     }
 
     private boolean isValidIndex(List<Item> usableItems, String argument) {
