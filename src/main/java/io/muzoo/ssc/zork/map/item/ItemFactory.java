@@ -19,7 +19,8 @@ public class ItemFactory {
                 WeaponType weaponType = WeaponType.getWeaponType(category);
                 int damage = ((Long) jsonObject.get("damage")).intValue();
                 int durability = ((Long) jsonObject.get("durability")).intValue();
-                return WeaponFactory.createdWeapon(weaponType, name, damage, durability);
+                boolean isLegendary = (boolean) jsonObject.get("isLegendary");
+                return WeaponFactory.createdWeapon(weaponType, name, damage, durability, isLegendary);
             case SHIELD:
                 ShieldType shieldType = ShieldType.getShieldType(category);
                 int defense = ((Long) jsonObject.get("defense")).intValue();

@@ -8,8 +8,8 @@ import io.muzoo.ssc.zork.map.monster.impl.Dragon;
 
 public class Arrow extends Weapon {
 
-    public Arrow(String name, int damage, int durability) {
-        super(WeaponType.ARROW, name, damage, durability);
+    public Arrow(String name, int damage, int durability, boolean isLegendary) {
+        super(WeaponType.ARROW, name, damage, durability, isLegendary);
     }
 
     @Override

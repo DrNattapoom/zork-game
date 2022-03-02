@@ -12,19 +12,25 @@ public abstract class Weapon extends Item {
     private WeaponType category;
     private int damage;
     private int durability;
+    private boolean isLegendary;
 
-    public Weapon(WeaponType category, String name, int damage, int durability) {
+    public Weapon(WeaponType category, String name, int damage, int durability, boolean isLegendary) {
         super(ItemType.WEAPON, name);
         this.category = category;
         this.damage = damage;
         this.durability = durability;
+        this.isLegendary = isLegendary;
     }
 
     @Override
     public void activate(Player player, Monster monster) {
         int originalAttackPower = player.getAttackPower();
-        int newAttackPower = originalAttackPower + this.getDamage();
+        int newAttackPower = originalAttackPower + this.getAttackPowerBoost();
         player.setAttackPower(newAttackPower);
+    }
+
+    private int getAttackPowerBoost() {
+        return (isLegendary) ? this.damage : new Random().nextInt(this.damage) + 1;
     }
 
     public int getDurability() {
@@ -33,10 +39,6 @@ public abstract class Weapon extends Item {
 
     public void setDurability(int durability) {
         this.durability = durability;
-    }
-
-    public int getDamage() {
-        return damage;
     }
 
 }

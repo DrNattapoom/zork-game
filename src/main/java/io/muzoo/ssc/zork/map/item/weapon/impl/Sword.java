@@ -5,8 +5,8 @@ import io.muzoo.ssc.zork.map.item.weapon.WeaponType;
 
 public class Sword extends Weapon {
 
-    public Sword(String name, int damage, int durability) {
-        super(WeaponType.SWORD, name, damage, durability);
+    public Sword(String name, int damage, int durability, boolean isLegendary) {
+        super(WeaponType.SWORD, name, damage, durability, isLegendary);
     }
 
 }

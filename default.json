@@ -16,7 +16,8 @@
                         "category": "SWORD",
                         "damage": 3,
                         "durability": 2,
-                        "name": "Wooden Sword"
+                        "name": "Wooden Sword",
+                        "isLegendary": false
                     }
                 },
                 {
@@ -43,7 +44,8 @@
                         "category": "SWORD",
                         "damage": 5,
                         "durability": 3,
-                        "name": "Iron Sword"
+                        "name": "Iron Sword",
+                        "isLegendary": false
                     }
                 },
                 {
@@ -100,7 +102,8 @@
                         "category": "SWORD",
                         "damage": 5,
                         "durability": 3,
-                        "name": "Iron Sword"
+                        "name": "Iron Sword",
+                        "isLegendary": false
                     }
                 },
                 {
@@ -136,7 +139,8 @@
                         "itemType": "WEAPON",
                         "durability": 5,
                         "name": "Diamond Sword",
-                        "category": "SWORD"
+                        "category": "SWORD",
+                        "isLegendary": false
                     }
                 }
             ],
@@ -187,7 +191,8 @@
                         "category": "ARROW",
                         "damage": 15,
                         "durability": 1,
-                        "name": "Legendary Arrow"
+                        "name": "Legendary Arrow",
+                        "isLegendary": true
                     }
                 },
                 {
@@ -254,7 +259,8 @@
                         "category": "SWORD",
                         "damage": 20,
                         "durability": 1,
-                        "name": "Excalibur"
+                        "name": "Excalibur",
+                        "isLegendary": true
                     }
                 }
             ]
@@ -271,7 +277,8 @@
             "category": "ARROW",
             "damage": 15,
             "durability": 1,
-            "name": "Legendary Arrow"
+            "name": "Legendary Arrow",
+            "isLegendary": true
         }]
     }
 }
