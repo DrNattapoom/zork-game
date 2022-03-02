@@ -265,13 +265,8 @@
         "hp": 10,
         "attackPower": 1,
         "defense": 0,
-        "location": 16,
-        "items": [{
-            "itemType": "WEAPON",
-            "category": "SWORD",
-            "damage": 3,
-            "durability": 100,
-            "name": "Wooden Sword"
-        }]
+        "mana": 0,
+        "location": 1,
+        "items": []
     }
 }

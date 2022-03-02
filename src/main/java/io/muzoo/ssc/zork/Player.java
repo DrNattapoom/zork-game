@@ -4,11 +4,12 @@ import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.ItemFactory;
 import io.muzoo.ssc.zork.map.item.weapon.Weapon;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Player extends Mortal {
 
@@ -17,6 +18,7 @@ public class Player extends Mortal {
     private List<Item> items;
     private int location;
     private int defense;
+    private int mana;
 
     public Player(int hp, int attackPower) {
         super(hp, attackPower);
@@ -30,6 +32,7 @@ public class Player extends Mortal {
         );
         this.location = ((Long) jsonObject.get("location")).intValue();
         this.defense = ((Long) jsonObject.get("defense")).intValue();
+        this.mana = ((Long) jsonObject.get("mana")).intValue();
         JSONArray itemList = (JSONArray) jsonObject.get("items");
         for (Object object : itemList) {
             JSONObject jsonItemObject = (JSONObject) object;
@@ -61,6 +64,21 @@ public class Player extends Mortal {
     }
 
     public void takeItem(Item item) {
+        List<Item> sameNameItems = items.stream().filter(itm -> itm.getName().startsWith(item.getName())).collect(Collectors.toList());
+        if (!sameNameItems.isEmpty()) {
+            List<Integer> suffixes = new ArrayList<>();
+            for (Item ownedItem : sameNameItems) {
+                String ownedItemName = ownedItem.getName();
+                String itemName = item.getName();
+                if (ownedItemName.startsWith(itemName)) {
+                    String suffixString = StringUtils.substringAfter(ownedItemName, itemName).trim();
+                    int suffix = (StringUtils.isBlank(suffixString)) ? 0 : Integer.parseInt(suffixString);
+                    suffixes.add(suffix);
+                }
+            }
+            int max = Collections.max(suffixes);
+            item.setName(String.format("%s %d", item.getName(), max + 1));
+        }
         items.add(item);
     }
 
@@ -70,6 +88,14 @@ public class Player extends Mortal {
 
     public void setDefense(int defense) {
         this.defense = defense;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
     }
 
     public void attackWith(Weapon weapon, Mortal enemy) {
@@ -101,11 +127,13 @@ public class Player extends Mortal {
                 "\tHP: %d \n" +
                 "\tAttack Power: %d \n" +
                 "\tDefense Power: %d \n" +
+                "\tMana: %d \n" +
                 "\tInventory: %s",
                 this.getMaxHp(),
                 this.getHp(),
                 this.getAttackPower(),
                 this.getDefense(),
+                this.getMana(),
                 this.getItems()
             )
         );

@@ -46,10 +46,18 @@ public class AttackCommand implements Command {
                         player.attackWith(weapon, enemy);
                         if (enemy.getHp() <= 0) {
                             System.out.println(monsterName + " is dead.");
+                            int exp = Math.round((float) enemy.getAttackPower() / 2);
                             game.getMap().getRoom(game.getPlayer().getLocation()).setMonster(null);
-                            player.setAttackPower(player.getAttackPower() + 1);
+                            player.setAttackPower(player.getAttackPower() + exp);
+                            player.setMana(player.getMana() + exp);
                             System.out.println("Leveled up!");
-                            System.out.println(String.format("Your Attack Power is now %d.", player.getAttackPower()));
+                            System.out.println(
+                                String.format(
+                                    "Your Attack Power and Mana are now %d and %d, respectively.",
+                                    player.getAttackPower(),
+                                    player.getMana()
+                                )
+                            );
                             if (enemy instanceof Dragon) {
                                 System.out.println("\nCongratulations!");
                                 System.out.println("The dragon has been slayed.");
