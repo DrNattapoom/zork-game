@@ -7,7 +7,7 @@
                 {
                     "number": 1,
                     "name": "the entrance hall",
-                    "description": "There is an item here.",
+                    "description": "This is where it all started.",
                     "doors": {
                         "south": 5
                     },
@@ -28,7 +28,7 @@
                 {
                     "number": 3,
                     "name": "a kitchen",
-                    "description": "There is a sword of a fallen knight, but, be careful, a goblin is here.",
+                    "description": "It seems like there is no food here.",
                     "doors": {
                         "east": 4,
                         "south": 7
@@ -49,7 +49,7 @@
                 {
                     "number": 4,
                     "name": "a buttery",
-                    "description": "It seems like a goblin loves liquor.",
+                    "description": "What? There is no liquor?",
                     "doors": {
                         "west": 3
                     },
@@ -64,7 +64,7 @@
                 {
                     "number": 5,
                     "name": "a library",
-                    "description": "There is a slime here. A piece of bookshelf here can be used as a shield",
+                    "description": "It's so quiet.",
                     "doors": {
                         "east": 6,
                         "south": 9,
@@ -85,7 +85,7 @@
                 {
                     "number": 6,
                     "name": "the hallway",
-                    "description": "There is a sword dropped here, but do not let your guard down. There is a monster here",
+                    "description": "This hallway seems like it will lead to the emptiness. What a gloomy place",
                     "doors": {
                         "east": 7,
                         "west": 5
@@ -106,7 +106,7 @@
                 {
                     "number": 7,
                     "name": "the Great Hall",
-                    "description": "It seems like there is an item here.",
+                    "description": "This place is filled with emptiness.",
                     "doors": {
                         "east": 8,
                         "south": 11,
@@ -122,7 +122,7 @@
                 {
                     "number": 8,
                     "name": "a prison",
-                    "description": "Be careful. There is a strong monster here. Hurry and pick up the weapon here.",
+                    "description": "What a depressing place.",
                     "doors": {
                         "west": 7
                     },
@@ -144,7 +144,7 @@
                 {
                     "number": 9,
                     "name": "a courtyard",
-                    "description": "Be careful. There is a goblin here.",
+                    "description": "This place is huge.",
                     "doors": {
                         "north": 5
                     },
@@ -157,7 +157,7 @@
                 {
                     "number": 10,
                     "name": "a solar",
-                    "description": "There is an item dropped here, but do not let your guard down. There is a monster here.",
+                    "description": "This used to be a nice room.",
                     "doors": {
                         "east": 11,
                         "south": 14
@@ -176,7 +176,7 @@
                 {
                     "number": 11,
                     "name": "a chapel",
-                    "description": "A holy place where the monsters cannot lurk in. This is where a lengendary item appears.",
+                    "description": ", a holy place where the monsters cannot lurk in. This is usually where lengendary items are summoned.",
                     "doors": {
                         "south": 15,
                         "north": 7,
@@ -207,7 +207,7 @@
                 {
                     "number": 14,
                     "name": "the Royal Bathroom",
-                    "description": "There is a slime in the bathroom.",
+                    "description": "This looks awesome.",
                     "doors": {
                         "north": 10
                     },
@@ -220,7 +220,7 @@
                 {
                     "number": 15,
                     "name": "a boudoir",
-                    "description": "Be careful. There is an orc here. Hurry and pick up the dropped sword might be a good idea.",
+                    "description": "This must have been a nice room",
                     "doors": {
                         "east": 16,
                         "north": 11
@@ -241,7 +241,7 @@
                 {
                     "number": 16,
                     "name": "the Throne Room",
-                    "description": "Finally, the dragon has been found. And next to it is the legendary sword, the Excalibur.",
+                    "description": "This is where the final battle will go down.",
                     "doors": {
                         "west": 15
                     },

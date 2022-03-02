@@ -63,4 +63,25 @@ public class Room {
         this.item = item;
     }
 
+    public void printRoomInfo(boolean brief) {
+        System.out.println(this.name);
+        System.out.println(this.description);
+        System.out.print("Doors: ");
+        for (String direction : this.doors.keySet()) {
+            System.out.print(direction + " ");
+        }
+        System.out.println("");
+        if (this.item != null) {
+            System.out.println(String.format("\nThere is the %s dropped here. ", this.item));
+        }
+        if (this.monster != null) {
+            if (item == null) System.out.println();
+            System.out.println(String.format("Be careful. There is one %s here. ", this.monster));
+            if (!brief) {
+                System.out.println("Here are the monster stats");
+                this.monster.printStats();
+            }
+        }
+    }
+
 }

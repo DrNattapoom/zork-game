@@ -15,9 +15,10 @@ public class TakeCommand implements Command {
             Room currentRoom = game.getMap().getRoom(player.getLocation());
             Item item = currentRoom.getItem();
             if (item != null) {
-                System.out.println(item + " acquired");
+                System.out.println("Taking " + item + " ...");
                 player.takeItem(item);
                 currentRoom.setItem(null);
+                System.out.println(item + " acquired");
             } else {
                 System.out.println("There is no item in this room");
             }

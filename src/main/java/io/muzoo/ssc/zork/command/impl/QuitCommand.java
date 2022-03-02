@@ -8,9 +8,9 @@ public class QuitCommand implements Command {
     @Override
     public void execute(Game game, String argument) {
         if (game.getPlaying()) {
-            System.out.println("ending the current game ...");
+            System.out.println("Terminating the current game ...");
             game.setPlaying(false);
-            System.out.println("Game Ended");
+            System.out.println("The current game terminated.");
         } else {
             System.out.println("This command is only available while playing the game");
         }

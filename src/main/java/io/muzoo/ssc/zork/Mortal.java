@@ -28,4 +28,6 @@ public abstract class Mortal {
 
     public abstract void attack(Mortal enemy);
 
+    public abstract void printStats();
+
 }

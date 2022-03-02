@@ -34,9 +34,10 @@ public class UseCommand implements Command {
                 }
                 Item tobeUsed = (isValidIndex(usableItems, argument)) ? usableItems.get(Integer.parseInt(argument) - 1) : usableItemsMap.get(argument);
                 if (tobeUsed != null) {
-                    System.out.println("using " + tobeUsed + " ...");
+                    System.out.println("Using " + tobeUsed + " ...");
                     tobeUsed.activate(player);
                     player.getItems().remove(tobeUsed);
+                    System.out.println(tobeUsed + " used.");
                 } else {
                     System.out.println("There is no such item");
                 }

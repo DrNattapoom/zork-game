@@ -3,7 +3,7 @@ package io.muzoo.ssc.zork;
 import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.ItemFactory;
 import io.muzoo.ssc.zork.map.item.weapon.Weapon;
-import org.apache.commons.lang3.StringUtils;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -80,6 +80,8 @@ public class Player extends Mortal {
         if (weapon.getDurability() <= 0) {
             System.out.println(weapon + " is now broken.");
             items.remove(weapon);
+        } else {
+            System.out.println(String.format("You can use this %s for %d more times before it breaks", weapon, weapon.getDurability()));
         }
         this.setAttackPower(originalAttackPower);
     }
@@ -89,6 +91,24 @@ public class Player extends Mortal {
         int currentEnemyHp = enemy.getHp();
         int damage = this.getAttackPower();
         enemy.setHp(currentEnemyHp - damage);
+    }
+
+    @Override
+    public void printStats() {
+        System.out.println(
+            String.format(
+                "\tMax HP: %d \n" +
+                "\tHP: %d \n" +
+                "\tAttack Power: %d \n" +
+                "\tDefense Power: %d \n" +
+                "\tInventory: %s",
+                this.getMaxHp(),
+                this.getHp(),
+                this.getAttackPower(),
+                this.getDefense(),
+                this.getItems()
+            )
+        );
     }
 
 }

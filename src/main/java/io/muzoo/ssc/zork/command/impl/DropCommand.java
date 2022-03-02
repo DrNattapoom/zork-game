@@ -31,8 +31,9 @@ public class DropCommand implements Command {
                 }
                 Item toBeDropped = (isValidIndex(items, argument)) ? items.get(Integer.parseInt(argument) - 1) : itemsMap.get(argument);
                 if (toBeDropped != null) {
-                    System.out.println("dropping " + toBeDropped + " ...");
+                    System.out.println("Dropping " + toBeDropped + " ...");
                     items.remove(toBeDropped);
+                    System.out.println(toBeDropped + " dropped.");
                 } else {
                     System.out.println("There is no such item");
                 }

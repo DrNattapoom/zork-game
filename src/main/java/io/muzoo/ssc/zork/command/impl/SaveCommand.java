@@ -1,6 +1,5 @@
 package io.muzoo.ssc.zork.command.impl;
 
-import com.google.gson.Gson;
 import io.muzoo.ssc.zork.Game;
 import io.muzoo.ssc.zork.command.Command;
 
@@ -9,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import com.google.gson.Gson;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,6 +28,7 @@ public class SaveCommand implements Command {
                 jsonSavePointObject.put("player", jsonPlayerObject);
                 String fileName = argument + ".json";
                 FileWriter file = null;
+                System.out.println("Saving " + argument + " ...");
                 try {
                     file = new FileWriter(fileName);
                     file.write(jsonSavePointObject.toJSONString());
@@ -37,6 +38,7 @@ public class SaveCommand implements Command {
                     IOUtils.closeQuietly(file);
                 }
                 game.getSavePoints().put(argument, fileName);
+                System.out.println(argument + " saved.");
             }
         } else {
             System.out.println("This command is only available while playing the game");

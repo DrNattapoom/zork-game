@@ -22,8 +22,7 @@ public abstract class Monster extends Mortal {
 
     @Override
     public void attack(Mortal enemy) {
-        String monsterName = StringUtils.capitalize(this.getMonsterType().getType().toLowerCase());
-        System.out.println(String.format("%s attacks back", monsterName));
+        System.out.println(String.format("%s attacks back", this));
         Player player = (Player) enemy;
         int currentPlayerDefense = player.getDefense();
         int damage = new Random().nextInt(this.getAttackPower()) + 1;
@@ -38,6 +37,25 @@ public abstract class Monster extends Mortal {
             System.out.println("Your defense remains " + Math.max(remainingDefense, 0));
         }
         System.out.println("Your HP is now " + player.getHp());
+    }
+
+    @Override
+    public void printStats() {
+        System.out.println(
+            String.format(
+                "\tType: %s \n" +
+                "\tHP: %d \n" +
+                "\tAttack Power: %d",
+                this,
+                this.getHp(),
+                this.getAttackPower()
+            )
+        );
+    }
+
+    @Override
+    public String toString() {
+        return StringUtils.capitalize(this.monsterType.getType().toLowerCase());
     }
 
 }
