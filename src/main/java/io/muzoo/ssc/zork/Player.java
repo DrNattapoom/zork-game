@@ -115,7 +115,7 @@ public class Player extends Mortal {
     @Override
     public void attack(Mortal enemy) {
         int currentEnemyHp = enemy.getHp();
-        int damage = this.getAttackPower();
+        int damage = new Random().nextInt(this.getAttackPower()) + 1;
         enemy.setHp(currentEnemyHp - damage);
     }
 

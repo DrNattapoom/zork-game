@@ -15,7 +15,7 @@
                         "itemType": "WEAPON",
                         "category": "SWORD",
                         "damage": 3,
-                        "durability": 1,
+                        "durability": 2,
                         "name": "Wooden Sword"
                     }
                 },
@@ -34,7 +34,7 @@
                         "south": 7
                     },
                     "monster": {
-                        "attackPower": 2,
+                        "attackPower": 3,
                         "monsterType": "GOBLIN",
                         "hp": 10
                     },
@@ -54,7 +54,7 @@
                         "west": 3
                     },
                     "monster": {
-                        "attackPower": 2,
+                        "attackPower": 3,
                         "monsterType": "GOBLIN",
                         "hp": 10
                     }
@@ -127,9 +127,9 @@
                         "west": 7
                     },
                     "monster": {
-                        "attackPower": 3,
+                        "attackPower": 5,
                         "monsterType": "ORC",
-                        "hp": 16
+                        "hp": 20
                     },
                     "item": {
                         "damage": 7,
@@ -149,7 +149,7 @@
                         "north": 5
                     },
                     "monster": {
-                        "attackPower": 2,
+                        "attackPower": 3,
                         "monsterType": "GOBLIN",
                         "hp": 10
                     }
@@ -176,7 +176,7 @@
                 {
                     "number": 11,
                     "name": "a chapel",
-                    "description": ", a holy place where the monsters cannot lurk in. This is usually where lengendary items are summoned.",
+                    "description": "A holy place where the monsters cannot lurk in. This is usually where lengendary items are summoned.",
                     "doors": {
                         "south": 15,
                         "north": 7,
@@ -226,16 +226,15 @@
                         "north": 11
                     },
                     "monster": {
-                        "attackPower": 3,
+                        "attackPower": 5,
                         "monsterType": "ORC",
                         "hp": 20
                     },
                     "item": {
-                        "itemType": "WEAPON",
-                        "category": "SWORD",
-                        "damage": 5,
-                        "durability": 3,
-                        "name": "Iron Sword"
+                        "itemType": "SHIELD",
+                        "category": "MAGICAL_SHIELD",
+                        "defense": 10,
+                        "name": "Holy Shield"
                     }
                 },
                 {
@@ -246,7 +245,7 @@
                         "west": 15
                     },
                     "monster": {
-                        "attackPower": 5,
+                        "attackPower": 10,
                         "monsterType": "DRAGON",
                         "hp": 50
                     },
@@ -254,7 +253,7 @@
                         "itemType": "WEAPON",
                         "category": "SWORD",
                         "damage": 20,
-                        "durability": 2,
+                        "durability": 1,
                         "name": "Excalibur"
                     }
                 }
