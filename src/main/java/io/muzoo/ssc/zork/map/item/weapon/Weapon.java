@@ -22,13 +22,6 @@ public abstract class Weapon extends Item {
         this.isLegendary = isLegendary;
     }
 
-    @Override
-    public void activate(Player player, Monster monster) {
-        int originalAttackPower = player.getAttackPower();
-        int newAttackPower = originalAttackPower + this.getAttackPowerBoost();
-        player.setAttackPower(newAttackPower);
-    }
-
     private int getAttackPowerBoost() {
         return (isLegendary) ? this.damage : new Random().nextInt(this.damage) + 1;
     }
@@ -39,6 +32,13 @@ public abstract class Weapon extends Item {
 
     public void setDurability(int durability) {
         this.durability = durability;
+    }
+
+    @Override
+    public void activate(Player player, Monster monster) {
+        int originalAttackPower = player.getAttackPower();
+        int newAttackPower = originalAttackPower + this.getAttackPowerBoost();
+        player.setAttackPower(newAttackPower);
     }
 
 }

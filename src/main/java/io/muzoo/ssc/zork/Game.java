@@ -30,6 +30,7 @@ public class Game {
     private Scanner scanner;
     private ZorkMap map;
     private Player player;
+
     private boolean playing;
     private boolean exit;
 
@@ -38,6 +39,10 @@ public class Game {
         this.savePoints = new HashMap<>();
         this.savePoints.put("default", DEFAULT_PATH);
         this.exit = false;
+    }
+
+    public static Map<String, String> getMapChoices() {
+        return MAP_CHOICES;
     }
 
     public void start() {
@@ -55,41 +60,6 @@ public class Game {
                 command.execute(this, commandLine.getArguments());
             }
         }
-    }
-
-    public void printContext() {
-        System.out.println(
-            "You are an adventurer who are hired by a king whose castle was seized by a dragon. Your task is to reclaim the castle. \n" +
-            "This is, however, not an easy feat because the vicious aura of the dragon has lured many monsters into the area. \n"
-        );
-        System.out.println("Goal: slay the dragon to reclaim the castle \n");
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public ZorkMap getMap() {
-        return map;
-    }
-
-    public boolean getPlaying() {
-        return playing;
-    }
-
-    public void setPlaying(boolean playing) {
-        this.playing = playing;
-    }
-
-    public boolean isExit() {
-        return exit;
-    }
-
-    public void exit() {
-        System.out.println("Exiting Zork ...");
-        this.exit = true;
-        this.scanner.close();
-        System.out.println("Zork exited. Bye!");
     }
 
     public void load(String filePath) {
@@ -124,8 +94,43 @@ public class Game {
         return savePoints;
     }
 
-    public static Map<String, String> getMapChoices() {
-        return MAP_CHOICES;
+    public ZorkMap getMap() {
+        return map;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public boolean getPlaying() {
+        return playing;
+    }
+
+    public void setPlaying(boolean playing) {
+        this.playing = playing;
+    }
+
+    public boolean isExit() {
+        return exit;
+    }
+
+    public void exit() {
+        System.out.println("Exiting Zork ...");
+        this.exit = true;
+        this.scanner.close();
+        System.out.println("Zork exited. Bye!");
+    }
+
+    public void printContext() {
+        System.out.println(
+            "You are an adventurer who are hired by a king whose castle was seized by a dragon. Your task is to reclaim the castle. \n" +
+            "This is, however, not an easy feat because the vicious aura of the dragon has lured many monsters into the area. \n"
+        );
+        System.out.println("Goal: slay the dragon to reclaim the castle \n");
     }
 
 }

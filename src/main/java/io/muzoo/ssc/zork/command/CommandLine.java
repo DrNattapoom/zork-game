@@ -18,4 +18,5 @@ public class CommandLine {
     public String getArguments() {
         return arguments;
     }
+
 }

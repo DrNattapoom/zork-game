@@ -16,14 +16,14 @@ public abstract class Shield extends Item {
         this.defense = defense;
     }
 
+    public int getDefense() {
+        return defense;
+    }
+
     @Override
     public void activate(Player player, Monster monster) {
         int originalDefense = player.getDefense();
         player.setDefense(originalDefense + this.getDefense());
-    }
-
-    public int getDefense() {
-        return defense;
     }
 
 }

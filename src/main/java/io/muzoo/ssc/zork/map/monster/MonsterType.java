@@ -1,9 +1,9 @@
 package io.muzoo.ssc.zork.map.monster;
 
-import io.muzoo.ssc.zork.map.monster.impl.Dragon;
-import io.muzoo.ssc.zork.map.monster.impl.Goblin;
-import io.muzoo.ssc.zork.map.monster.impl.Orc;
-import io.muzoo.ssc.zork.map.monster.impl.Slime;
+import io.muzoo.ssc.zork.map.monster.monsters.Dragon;
+import io.muzoo.ssc.zork.map.monster.monsters.Goblin;
+import io.muzoo.ssc.zork.map.monster.monsters.Orc;
+import io.muzoo.ssc.zork.map.monster.monsters.Slime;
 
 public enum MonsterType {
 
@@ -14,8 +14,6 @@ public enum MonsterType {
 
     private Class<? extends Monster> monsterClass;
     private String type;
-    private int defaultHp;
-    private int defaultAttackPower;
 
     MonsterType(Class<? extends Monster> monsterClass, String type) {
         this.monsterClass = monsterClass;

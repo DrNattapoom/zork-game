@@ -17,7 +17,6 @@ public class GoCommand implements Command {
                 player.setLocation(nextLocation);
                 player.recover(1);
                 player.setMana(player.getMana() + 1);
-                System.out.println(player.getMana());
                 Room nextRoom = game.getMap().getRoom(nextLocation);
                 System.out.print("Now, you are in ");
                 nextRoom.printRoomInfo(true);

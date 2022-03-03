@@ -70,7 +70,7 @@ public class Room {
         for (String direction : this.doors.keySet()) {
             System.out.print(direction + " ");
         }
-        System.out.println("");
+        System.out.println();
         if (this.item != null) {
             System.out.println(String.format("\nThere is the %s dropped here. ", this.item));
         }

@@ -33,6 +33,8 @@ public class SaveCommand implements Command {
                     file = new FileWriter(fileName);
                     file.write(jsonSavePointObject.toJSONString());
                 } catch (IOException e) {
+                    System.out.println("[SaveCommand.execute]");
+                    System.out.println("IOException: " + e.getMessage());
                     e.printStackTrace();
                 } finally {
                     IOUtils.closeQuietly(file);
@@ -50,6 +52,8 @@ public class SaveCommand implements Command {
         try {
             return (JSONObject) new JSONParser().parse(jsonString);
         } catch (ParseException e) {
+            System.out.println("[SaveCommand.getJSONObject]");
+            System.out.println("ParseException: " + e.getMessage());
             e.printStackTrace();
         }
         return null;

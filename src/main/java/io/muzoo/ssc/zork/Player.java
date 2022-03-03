@@ -28,8 +28,8 @@ public class Player extends Mortal {
 
     public Player(JSONObject jsonObject) {
         this(
-            ((Long) jsonObject.get("hp")).intValue(),
-            ((Long) jsonObject.get("attackPower")).intValue()
+                ((Long) jsonObject.get("hp")).intValue(),
+                ((Long) jsonObject.get("attackPower")).intValue()
         );
         this.location = ((Long) jsonObject.get("location")).intValue();
         this.defense = ((Long) jsonObject.get("defense")).intValue();
@@ -38,7 +38,7 @@ public class Player extends Mortal {
         for (Object object : itemList) {
             JSONObject jsonItemObject = (JSONObject) object;
             Item item = ItemFactory.createdItem(jsonItemObject);
-            this.items.add(item);
+            this.takeItem(item);
         }
     }
 
@@ -50,6 +50,22 @@ public class Player extends Mortal {
 
     public int getMaxHp() {
         return MAX_HP;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
     }
 
     public int getLocation() {
@@ -81,22 +97,6 @@ public class Player extends Mortal {
             item.setName(String.format("%s %d", item.getName(), max + 1));
         }
         items.add(item);
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    public void setMana(int mana) {
-        this.mana = mana;
     }
 
     public void attackWith(Weapon weapon, Mortal enemy) {

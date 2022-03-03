@@ -1,4 +1,4 @@
-package io.muzoo.ssc.zork.map.item.potion.impl;
+package io.muzoo.ssc.zork.map.item.potion.potions;
 
 import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.map.item.potion.Potion;

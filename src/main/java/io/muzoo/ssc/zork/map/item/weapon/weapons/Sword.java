@@ -1,4 +1,4 @@
-package io.muzoo.ssc.zork.map.item.weapon.impl;
+package io.muzoo.ssc.zork.map.item.weapon.weapons;
 
 import io.muzoo.ssc.zork.map.item.weapon.Weapon;
 import io.muzoo.ssc.zork.map.item.weapon.WeaponType;

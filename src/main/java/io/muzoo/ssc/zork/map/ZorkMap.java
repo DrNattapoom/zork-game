@@ -73,42 +73,44 @@ public class ZorkMap {
         return rooms;
     }
 
-    public int[] getDimension() {
-        return dimension;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public int[] getDimension() {
+        return dimension;
     }
 
     public void printMap(int playerLocation) {
         int width = this.dimension[0];
         int height = this.dimension[1];
-        char[][] toPrint = new char[height*4][width*11];
+        int xScale = 11;
+        int yScale = 4;
+        char[][] toPrint = new char[height*yScale][width*xScale];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 Room room = this.rooms[i][j];
                 if (!room.getDoors().keySet().isEmpty()) {
                     // ┌─────────┐
+                    // │ you are │
+                    // │  here!  │
+                    // └─────────┘
+                    // ┌─────────┐
                     // │         │
                     // │         │
                     // └─────────┘
+                    int[] indexes = getIndexesFromRoomNumber(playerLocation);
+                    String upperCenterRow = (i == indexes[0] && j == indexes[1]) ? "│ you are │" : "│         │";
+                    String lowerCenterRow = (i == indexes[0] && j == indexes[1]) ? "│  here!  │" : "│         │";
                     char[][] normalRoom = new char[][] {
                             "┌─────────┐".toCharArray(),
-                            "│         │".toCharArray(),
-                            "│         │".toCharArray(),
+                            upperCenterRow.toCharArray(),
+                            lowerCenterRow.toCharArray(),
                             "└─────────┘".toCharArray()
                     };
-                    char[][] currentRoom = new char[][] {
-                            "┌─────────┐".toCharArray(),
-                            "│ you are │".toCharArray(),
-                            "│  here!  │".toCharArray(),
-                            "└─────────┘".toCharArray()
-                    };
-                    int[] indexes = getIndexesFromRoomNumber(playerLocation);
                     for (int k = 0; k < normalRoom.length; k++) {
                         for (int l = 0; l < normalRoom[0].length; l++) {
-                            toPrint[i*4 + k][j*11 + l] = (i == indexes[0] && j == indexes[1]) ? currentRoom[k][l] : normalRoom[k][l];
+                            toPrint[i*yScale + k][j*xScale + l] = normalRoom[k][l];
                         }
                     }
                     for (String direction : room.getDoors().keySet()) {
@@ -118,34 +120,34 @@ public class ZorkMap {
                                 // │         │
                                 // │         │
                                 // └─────────┘
-                                toPrint[i*4][j*11 + 4] = '┘';
-                                toPrint[i*4][j*11 + 5] = ' ';
-                                toPrint[i*4][j*11 + 6] = '└';
+                                toPrint[i*yScale][j*xScale + (xScale / 2) - 1] = '┘';
+                                toPrint[i*yScale][j*xScale + (xScale / 2)] = ' ';
+                                toPrint[i*yScale][j*xScale + (xScale / 2) + 1] = '└';
                                 break;
                             case "south":
                                 // ┌─────────┐
                                 // │         │
                                 // │         │
                                 // └───┐ ┌───┘
-                                toPrint[i*4 + 3][j*11 + 4] = '┐';
-                                toPrint[i*4 + 3][j*11 + 5] = ' ';
-                                toPrint[i*4 + 3][j*11 + 6] = '┌';
+                                toPrint[i*yScale + (yScale - 1)][j*xScale + (xScale / 2) - 1] = '┐';
+                                toPrint[i*yScale + (yScale - 1)][j*xScale + (xScale / 2)] = ' ';
+                                toPrint[i*yScale + (yScale - 1)][j*xScale + (xScale / 2) + 1] = '┌';
                                 break;
                             case "west":
                                 // ┌─────────┐
                                 // ┘         │
                                 // ┐         │
                                 // └─────────┘
-                                toPrint[i*4 + 1][j*11] = '┘';
-                                toPrint[i*4 + 2][j*11] = '┐';
+                                toPrint[i*yScale + (yScale / 2) - 1][j*xScale] = '┘';
+                                toPrint[i*yScale + (yScale / 2)][j*xScale] = '┐';
                                 break;
                             case "east":
                                 // ┌─────────┐
                                 // │         └
                                 // │         ┌
                                 // └─────────┘
-                                toPrint[i*4 + 1][j*11 + 10] = '└';
-                                toPrint[i*4 + 2][j*11 + 10] = '┌';
+                                toPrint[i*yScale + (yScale / 2) - 1][j*xScale + (xScale - 1)] = '└';
+                                toPrint[i*yScale + (yScale / 2)][j*xScale + (xScale - 1)] = '┌';
                                 break;
                         }
                     }

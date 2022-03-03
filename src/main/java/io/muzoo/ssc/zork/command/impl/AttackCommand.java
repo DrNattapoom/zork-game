@@ -6,7 +6,7 @@ import io.muzoo.ssc.zork.command.Command;
 import io.muzoo.ssc.zork.map.item.Item;
 import io.muzoo.ssc.zork.map.item.weapon.Weapon;
 import io.muzoo.ssc.zork.map.monster.Monster;
-import io.muzoo.ssc.zork.map.monster.impl.Dragon;
+import io.muzoo.ssc.zork.map.monster.monsters.Dragon;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -58,7 +58,7 @@ public class AttackCommand implements Command {
             game.getMap().getRoom(game.getPlayer().getLocation()).setMonster(null);
             player.setAttackPower(player.getAttackPower() + exp);
             player.setMana(player.getMana() + exp);
-            System.out.println("Leveled up!");
+            System.out.println("\nLeveled up!");
             System.out.println(
                 String.format(
                     "Your Attack Power and Mana are now %d and %d, respectively.",

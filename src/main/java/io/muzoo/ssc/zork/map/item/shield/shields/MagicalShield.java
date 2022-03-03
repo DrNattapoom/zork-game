@@ -1,4 +1,4 @@
-package io.muzoo.ssc.zork.map.item.shield.impl;
+package io.muzoo.ssc.zork.map.item.shield.shields;
 
 import io.muzoo.ssc.zork.Player;
 import io.muzoo.ssc.zork.map.item.shield.Shield;
