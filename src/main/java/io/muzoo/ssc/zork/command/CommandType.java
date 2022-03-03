@@ -13,6 +13,7 @@ public enum CommandType {
     TELEPORT(TeleportCommand.class, "teleport", String.format("teleport player to a random room with a cost of %d mana, if you use this command with insufficient mana, your mana will be wasted, this command only available while playing game", TeleportCommand.getManaCost())),
     GO(GoCommand.class, "go", "move player to the room as specified by the direction, e.g. north, east, west, south, this command only available while playing game"),
     MAP(MapCommand.class, "map", "print 2D map using ascii art, this command only available while playing game"),
+    AUTOPILOT(AutopilotCommand.class, "autopilot", "run this game in autopilot mode using the list of command in the file, this command only available while playing game"),
     HELP(HelpCommand.class, "help", "print all commands"),
     QUIT(QuitCommand.class, "quit", "end the current game and return to command prompt to let user choose the map or load from saved point again"),
     PLAY(PlayCommand.class, "play", "play new game, this command only available at when start the game"),

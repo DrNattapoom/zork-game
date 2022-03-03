@@ -111,33 +111,6 @@ public class ZorkMap {
                             toPrint[i*4 + k][j*11 + l] = (i == indexes[0] && j == indexes[1]) ? currentRoom[k][l] : normalRoom[k][l];
                         }
                     }
-//                    // ┌─────────┐
-//                    // │ you are │
-//                    // │  here!  │
-//                    // └─────────┘
-//                    int[] indexes = getIndexesFromRoomNumber(playerLocation);
-//                    if (i == indexes[0] && j == indexes[1]) {
-//                        String[] lines = new String[] {
-//                            "│ you are │",
-//                            "│  here!  │"
-//                        };
-//                        for (int k = 0; k < lines.length; k++) {
-//                            for (int l = 0; l < lines[0].length()) {
-//
-//                            }
-//                        }
-//                        toPrint[i*4 + 1][j*11 + 2] = 'y';
-//                        toPrint[i*4 + 1][j*11 + 3] = 'o';
-//                        toPrint[i*4 + 1][j*11 + 4] = 'u';
-//                        toPrint[i*4 + 1][j*11 + 6] = 'a';
-//                        toPrint[i*4 + 1][j*11 + 7] = 'r';
-//                        toPrint[i*4 + 1][j*11 + 8] = 'e';
-//                        toPrint[i*4 + 2][j*11 + 3] = 'h';
-//                        toPrint[i*4 + 2][j*11 + 4] = 'e';
-//                        toPrint[i*4 + 2][j*11 + 5] = 'r';
-//                        toPrint[i*4 + 2][j*11 + 6] = 'e';
-//                        toPrint[i*4 + 2][j*11 + 7] = '!';
-//                    }
                     for (String direction : room.getDoors().keySet()) {
                         switch (direction) {
                             case "north":

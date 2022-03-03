@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 
 public class AttackCommand implements Command {
 
+    private boolean attackWithPunch = false;
+
     @Override
     public void execute(Game game, String argument) {
         if (game.getPlaying()) {
@@ -24,23 +26,18 @@ public class AttackCommand implements Command {
             } else {
                 Player player = game.getPlayer();
                 List<Item> usableItems = player.getItems().stream().filter(item -> item instanceof Weapon).collect(Collectors.toList());
-                if (usableItems.isEmpty()) {
-                    System.out.println("There is no item to be used to attack with");
-                    System.out.println("Do you want to attack without a weapon? [yes/no]");
-                    Scanner scanner = new Scanner(System.in);
-                    String answer = scanner.nextLine();
-                    if (answer.equals("yes") || answer.equals("y")) {
+                Item tobeUsed = getWantedItem(usableItems, argument, "What do you want to attack with?");
+                if (tobeUsed != null) {
+                    Weapon weapon = (Weapon) tobeUsed;
+                    String monsterName = StringUtils.capitalize(enemy.getMonsterType().getType().toLowerCase());
+                    System.out.println(String.format("Attack %s with %s", monsterName, weapon));
+                    player.attackWith(weapon, enemy);
+                    attackConsequence(game, player, enemy, argument);
+                } else {
+                    if (attackWithPunch) {
                         player.attack(enemy);
                         attackConsequence(game, player, enemy, argument);
-                    }
-                } else {
-                    Item tobeUsed = getWantedItem(usableItems, argument, "What do you want to attack with?");
-                    if (tobeUsed != null) {
-                        Weapon weapon = (Weapon) tobeUsed;
-                        String monsterName = StringUtils.capitalize(enemy.getMonsterType().getType().toLowerCase());
-                        System.out.println(String.format("Attack %s with %s", monsterName, weapon));
-                        player.attackWith(weapon, enemy);
-                        attackConsequence(game, player, enemy, argument);
+                        this.attackWithPunch = false;
                     } else {
                         System.out.println("There is no such item");
                     }
@@ -79,10 +76,17 @@ public class AttackCommand implements Command {
             System.out.println(String.format("%s's HP remains %d. \n", monsterName, enemy.getHp()));
             System.out.println(String.format("%s attacks back", enemy));
             System.out.println("Do you want to use anything? [yes/no]");
-            Scanner scanner = new Scanner(System.in);
-            String answer = scanner.nextLine();
+            String[] arguments = (argument == null) ? new String[1] : argument.split(" --");
+            String answer = "";
+            if (arguments.length < 2) {
+                Scanner scanner = new Scanner(System.in);
+                scanner.nextLine();
+            } else {
+                answer = arguments[1];
+                System.out.println("\u001B[32m" + answer + "\u001B[0m");
+            }
             if (answer.equals("yes") || answer.equals("y")) {
-                new UseCommand().execute(game, argument);
+                new UseCommand().execute(game, arguments[2]);
             }
             enemy.attack(player);
             if (player.getHp() <= 0) {
@@ -103,8 +107,15 @@ public class AttackCommand implements Command {
             for (int i = 0; i < items.size(); i++) {
                 System.out.println(String.format("(%d) %s ", i + 1, items.get(i)));
             }
+            System.out.println(String.format("(%d) Punch ", items.size() + 1));
             Scanner scanner = new Scanner(System.in);
             argument = scanner.nextLine();
+        } else {
+            argument = (argument.contains(" --")) ? argument.split(" --")[0] : argument;
+        }
+        if (argument.equals(String.format("%d", items.size() + 1)) || argument.toLowerCase().equals("punch")) {
+            this.attackWithPunch = true;
+            return null;
         }
         return (isValidIndex(items, argument)) ? items.get(Integer.parseInt(argument) - 1) : itemsMap.get(argument);
     }
