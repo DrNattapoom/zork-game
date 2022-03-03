@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 public class Player extends Mortal {
 
+    private static Player player;
     private static int MAX_HP = 10;
 
     private List<Item> items;
@@ -21,25 +22,40 @@ public class Player extends Mortal {
     private int defense;
     private int mana;
 
-    public Player(int hp, int attackPower) {
+    private Player(int hp, int attackPower) {
         super(hp, attackPower);
-        this.items = new ArrayList<>();
+        items = new ArrayList<>();
     }
 
-    public Player(JSONObject jsonObject) {
-        this(
+    private static void initialize(JSONObject jsonObject) {
+        player = new Player(
                 ((Long) jsonObject.get("hp")).intValue(),
                 ((Long) jsonObject.get("attackPower")).intValue()
         );
-        this.location = ((Long) jsonObject.get("location")).intValue();
-        this.defense = ((Long) jsonObject.get("defense")).intValue();
-        this.mana = ((Long) jsonObject.get("mana")).intValue();
+        player.setLocation(((Long) jsonObject.get("location")).intValue());
+        player.setDefense(((Long) jsonObject.get("defense")).intValue());
+        player.setMana(((Long) jsonObject.get("mana")).intValue());
         JSONArray itemList = (JSONArray) jsonObject.get("items");
         for (Object object : itemList) {
             JSONObject jsonItemObject = (JSONObject) object;
             Item item = ItemFactory.createdItem(jsonItemObject);
-            this.takeItem(item);
+            player.takeItem(item);
         }
+    }
+
+    public static Player getInstance(JSONObject jsonObject) {
+        if (player == null) {
+            Player.initialize(jsonObject);
+        }
+        return Player.getInstance();
+    }
+
+    public static Player getInstance() {
+        return player;
+    }
+
+    public static void reset() {
+        player = null;
     }
 
     public void recover(int recoveredHp) {
@@ -50,22 +66,6 @@ public class Player extends Mortal {
 
     public int getMaxHp() {
         return MAX_HP;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    public void setMana(int mana) {
-        this.mana = mana;
     }
 
     public int getLocation() {
@@ -97,6 +97,22 @@ public class Player extends Mortal {
             item.setName(String.format("%s %d", item.getName(), max + 1));
         }
         items.add(item);
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
     }
 
     public void attackWith(Weapon weapon, Mortal enemy) {

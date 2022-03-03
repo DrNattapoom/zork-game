@@ -87,7 +87,7 @@ public class Game {
         JSONObject jsonMapObject = (JSONObject) jsonGameObject.get("map");
         this.map = new ZorkMap(jsonMapObject);
         JSONObject jsonPlayerObject = (JSONObject) jsonGameObject.get("player");
-        this.player = new Player(jsonPlayerObject);
+        this.player = Player.getInstance(jsonPlayerObject);
     }
 
     public Map<String, String> getSavePoints() {
@@ -100,10 +100,6 @@ public class Game {
 
     public Player getPlayer() {
         return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public boolean getPlaying() {
