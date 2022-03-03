@@ -7,7 +7,8 @@ public class CommandParser {
     public static CommandLine parseCommand(String rawInput) {
         for (CommandType commandType : CommandType.values()) {
             if (commandType.match(rawInput)) {
-                String argument = rawInput.replace(commandType.getCommandWord(), "").trim();
+                // String argument = rawInput.replace(commandType.getCommandWord(), "").trim();
+                String argument = StringUtils.replace(rawInput, commandType.getCommandWord(), "", 1).trim();
                 argument = (StringUtils.isBlank(argument)) ? null : argument;
                 return new CommandLine(commandType, argument);
             }
