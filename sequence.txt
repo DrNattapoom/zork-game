@@ -1,23 +1,67 @@
 take
 go south
 take
-attack with Wooden Sword --use=yes --item=1
+attack with Wooden Sword --use=yes --item=Wooden Shield
 attack with Punch --use=no
 info
 go south
-attack with 1 --use=yes --item=1
-attack with 1 --use=yes --item=1
-attack with Punch --use=no
-attack with 1 --use=no
-attack with 1 --use=no
 map
 go north
 go east
 take
 attack with 1 --use=no
+attack with 1 --use=no
 go east
 take
 info
+go east
+take
+attack with Diamond Sword --use=no
+heal
+attack with Diamond Sword --use=no
+attack with Iron Sword --use=no
+info
+attack with Iron Sword --use=no
+drop Iron Sword
+map
+go west
 go north
 take
-attack with punch --use=no
+attack with Iron Sword --use=no
+attack with Iron Sword --use=no
+attack with Punch --use=no
+heal
+go east
+attack with 1 --use=no
+attack with Punch --use=no
+info
+map
+go west
+go south
+go south
+take
+go west
+take
+atttack with Punch --use=no
+info
+go south
+attack with Punch --use=no
+map
+go north
+go east
+go south
+take
+attack with Diamond Sword --use=no
+attack with Punch --use=no
+map
+go east
+take
+info
+use Power Potion
+attack with Iron Sword --use=yes --item=Holy Shield
+info
+attack with Legendary Arrow --use=no
+attack with Excalibur --use=yes --item=Healing Potion
+heal
+attack with Diamond Sword --use=no
+attack with 1 --use=no

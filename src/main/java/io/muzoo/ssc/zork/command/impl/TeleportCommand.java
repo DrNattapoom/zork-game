@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class TeleportCommand implements Command {
 
-    private static final int MANA_COST = 5;
+    private static final int MANA_COST = 3;
 
     @Override
     public void execute(Game game, String argument) {
@@ -31,6 +31,7 @@ public class TeleportCommand implements Command {
                     randomLocation = random.nextInt(max) + 1;
                     destination = game.getMap().getRoom(randomLocation);
                 }
+                System.out.println("Teleporting to a random place ...");
                 player.setLocation(randomLocation);
                 player.recover(1);
                 System.out.print("Now, you are in ");

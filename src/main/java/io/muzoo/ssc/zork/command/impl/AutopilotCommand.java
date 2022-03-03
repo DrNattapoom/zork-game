@@ -6,6 +6,7 @@ import io.muzoo.ssc.zork.command.Command;
 import io.muzoo.ssc.zork.command.CommandFactory;
 import io.muzoo.ssc.zork.command.CommandLine;
 import io.muzoo.ssc.zork.command.CommandParser;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -38,14 +39,16 @@ public class AutopilotCommand implements Command {
                 }
                 if (lines != null) {
                     for (String line : lines) {
-                        System.out.println("> " + "\u001B[32m" + line + "\u001B[0m");
-                        CommandLine commandLine = CommandParser.parseCommand(line);
-                        if (commandLine == null) {
-                            System.out.println("Try again ...");
-                            System.out.println("Type 'help' if you need help");
-                        } else {
-                            Command command = CommandFactory.get(commandLine.getCommandType());
-                            command.execute(game, commandLine.getArguments());
+                        if (game.getPlaying()) {
+                            System.out.println("> " + "\u001B[32m" + line + "\u001B[0m");
+                            CommandLine commandLine = CommandParser.parseCommand(line);
+                            if (commandLine == null) {
+                                System.out.println("Try again ...");
+                                System.out.println("Type 'help' if you need help");
+                            } else {
+                                Command command = CommandFactory.get(commandLine.getCommandType());
+                                command.execute(game, commandLine.getArguments());
+                            }
                         }
                     }
                 }

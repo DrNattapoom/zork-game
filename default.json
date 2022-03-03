@@ -272,21 +272,6 @@
         "defense": 0,
         "mana": 0,
         "location": 1,
-        "items": [{
-            "itemType": "SHIELD",
-            "category": "PHYSICAL_SHIELD",
-            "defense": 3,
-            "name": "Wooden Shield"
-        },{
-            "itemType": "SHIELD",
-            "category": "PHYSICAL_SHIELD",
-            "defense": 3,
-            "name": "Wooden Shield 1"
-        },{
-            "itemType": "SHIELD",
-            "category": "PHYSICAL_SHIELD",
-            "defense": 3,
-            "name": "Wooden Shield 2"
-        }]
+        "items": []
     }
 }

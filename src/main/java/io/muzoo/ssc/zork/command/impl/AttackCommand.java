@@ -27,14 +27,15 @@ public class AttackCommand implements Command {
                 Player player = game.getPlayer();
                 List<Item> usableItems = player.getItems().stream().filter(item -> item instanceof Weapon).collect(Collectors.toList());
                 Item tobeUsed = getWantedItem(usableItems, argument, "What do you want to attack with?");
+                String monsterName = StringUtils.capitalize(enemy.getMonsterType().getType().toLowerCase());
                 if (tobeUsed != null) {
                     Weapon weapon = (Weapon) tobeUsed;
-                    String monsterName = StringUtils.capitalize(enemy.getMonsterType().getType().toLowerCase());
                     System.out.println(String.format("Attack %s with %s", monsterName, weapon));
                     player.attackWith(weapon, enemy);
                     attackConsequence(game, player, enemy, argument);
                 } else {
                     if (attackWithPunch) {
+                        System.out.println(String.format("Attack %s with Punch", monsterName));
                         player.attack(enemy);
                         attackConsequence(game, player, enemy, argument);
                         this.attackWithPunch = false;
