@@ -80,13 +80,14 @@ public class AttackCommand implements Command {
             String answer = "";
             if (arguments.length < 2) {
                 Scanner scanner = new Scanner(System.in);
-                scanner.nextLine();
+                answer = scanner.nextLine();
             } else {
-                answer = arguments[1];
+                answer = StringUtils.substringAfter(arguments[1], "=");
                 System.out.println("\u001B[32m" + answer + "\u001B[0m");
             }
             if (answer.equals("yes") || answer.equals("y")) {
-                new UseCommand().execute(game, arguments[2]);
+                String useArgument = (arguments.length == 3) ? StringUtils.substringAfter(arguments[2], "=") : "";
+                new UseCommand().execute(game, useArgument);
             }
             enemy.attack(player);
             if (player.getHp() <= 0) {
